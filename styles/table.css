@@ -1,0 +1,58 @@
+.tc-wrap {
+	border: 3px solid var(--border-color) !important;
+	border-collapse: collapse;
+	padding: 0;
+	width: 100%;
+	grid-template-columns: calc(100% - 0px) 0px !important;
+    /* --cell-size: unset !important; */
+}
+.tc-wrap .tc-table.tc-table--heading {
+	border-top: 0;
+}
+
+.tc-wrap .tc-table .tc-row:first-child {
+	background: var(--block-dark-color);
+	color: var(--block-light-color);
+	text-align: left;
+	font-weight: bold;
+}
+
+.tc-wrap .tc-table .tc-row:first-child .tc-cell {
+	padding: 5px;
+}
+
+.tc-wrap .tc-table .tc-row:not(:first-child) {
+	border-bottom: 1px solid var(--block-muted-color);
+	text-align: center;
+	padding: 5px;
+	background: var(--block-background-color);
+	color: var(--block-dark-color);
+	text-align: left;
+}
+
+.tc-wrap .tc-table .tc-row .tc-cell {
+	text-align: left;
+	padding: 0;
+	border: 0;
+}
+
+.tc-cell--selected { 
+	background: none;
+}
+
+.tc-wrap .tc-table .tc-row .tc-cell::selection {
+	color: var(--block-text-color);
+}
+
+.tc-wrap .tc-table .tc-row:not(:first-child) .tc-cell:not(:first-child) {
+	padding: 0 3px;
+}
+
+.tc-add-column {
+	border-left: 1px solid var(--border-color) !important;
+}
+
+.tc-add-column,
+.tc-add-row {
+	display: none !important;
+}
