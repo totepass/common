@@ -1,19 +1,20 @@
 {
-  "name": "@totepass/common",
-  "version": "1.0.0",
-  "description": "Common styles and scripts for Totepass applications",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/totepass/common.git"
-  },
-  "author": "Totepass Team (https://totepass.com/en/about/)",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/totepass/common/issues"
-  },
-  "homepage": "https://github.com/totepass/common#readme"
+    "name": "@totepass/common",
+    "version": "1.0.0",
+    "description": "Common styles and scripts for Totepass applications",
+    "main": "index.js",
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/totepass/common.git"
+    },
+    "author": "Totepass Team (https://totepass.com/en/about/)",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/totepass/common/issues"
+    },
+    "homepage": "https://github.com/totepass/common#readme",
+    "publishConfig": {
+        "@totepass:registry": "https://npm.pkg.github.com"
+    }
 }
