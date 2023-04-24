@@ -413,8 +413,26 @@ textarea {
 	width: 32px;
 }
 
-.codex-editor__redactor {
-	padding-bottom: 5px !important;
+ol li,
+ul li {
+    padding: 10px 0;
+}
+
+figure {
+	margin: 0;
+}
+
+.article img {
+	border-radius: var(--block-border-radius);
+	border: 3px solid var(--border-color);
+	max-width: 100%;
+}
+
+figcaption {
+	text-align: center;
+	font-style: italic;
+	color: var(--block-muted-color);
+	padding: 5px 15px;
 }
 
 @media only screen and (max-width: 768px) {
