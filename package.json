@@ -1,6 +1,6 @@
 {
     "name": "@totepass/common",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Common styles and scripts for Totepass applications",
     "main": "index.js",
     "scripts": {},

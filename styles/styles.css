@@ -249,23 +249,6 @@ section h6 {
 	font-size: 0.67em;
 }
 
-footer {
-	margin: 15px;
-}
-
-footer .block {
-	display: inline-block;
-}
-
-footer .copyright {
-	display: inline-block;
-}
-
-footer .content {
-	border-top: 3px dotted var(--block-dark-color);
-	padding-top: 10px;
-}
-
 .muted {
 	color: var(--block-muted-color);
 }
@@ -456,17 +439,5 @@ figcaption {
 
 	.content .content {
 		margin: 15px 0;
-	}
-
-	footer .content {
-		margin: 0;
-	}
-
-	footer .block {
-		font-size: 1em;
-	}
-
-	footer .copyright {
-		margin-left: 3px;
 	}
 }
