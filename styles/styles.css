@@ -280,10 +280,8 @@ section h6 {
 	background-color: #fff;
 }
 
-.form-element img {
-	border: 3px solid var(--block-dark-color);
-	border-radius: var(--block-border-radius);
-	margin-top: 5px;
+.form-element .block.wrapper img {
+	margin-bottom: -5px !important;
 }
 
 .form-element input {
