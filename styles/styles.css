@@ -122,7 +122,7 @@ header.striped,
 
 .block.disabled,
 .block.disabled * {
-	cursor: not-allowed;
+	cursor: not-allowed !important;
 }
 
 .block.disabled {
@@ -280,19 +280,22 @@ section h6 {
 	background-color: #fff;
 }
 
-.form-element img {
-	border: 3px solid var(--block-dark-color);
-	border-radius: var(--block-border-radius);
-	margin-top: 5px;
+.form-element .block.wrapper img {
+	margin-bottom: -5px !important;
 }
 
 .form-element input {
-	width: 96%;
+	width: calc(100% - 10px);
 	margin-left: 1px;
 	border: none;
 	font-size: 16px;
 	padding: 5px;
 	background: transparent;
+}
+
+.form-element .row .col .block.wrapper input[type="date"],
+.form-element .row .col .block.wrapper input[type="time"] {
+    width: calc(100% - 35px);
 }
 
 .form-element input[type='checkbox'] {
@@ -416,6 +419,25 @@ figcaption {
 	font-style: italic;
 	color: var(--block-muted-color);
 	padding: 5px 15px;
+}
+
+input[type="date"],
+input[type="time"] {
+	min-height: 20px;
+	padding: 5px;
+	padding-left: 30px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    background: none;
+}
+
+.block i.input.las {
+    position: absolute;
+    left: 5px;
+    margin-top: 5px;
+    font-size: 1.2rem !important;
 }
 
 @media only screen and (max-width: 768px) {
