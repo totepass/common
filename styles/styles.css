@@ -281,7 +281,7 @@ section h6 {
 }
 
 .form-element .block.wrapper img {
-	margin-bottom: -4px !important;
+	margin-bottom: -5px !important;
 }
 
 .form-element input {
@@ -414,6 +414,25 @@ figcaption {
 	font-style: italic;
 	color: var(--block-muted-color);
 	padding: 5px 15px;
+}
+
+input[type="date"],
+input[type="time"] {
+	min-height: 20px;
+	padding: 5px;
+	padding-left: 30px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    background: none;
+}
+
+.block i.input.las {
+    position: absolute;
+    left: 5px;
+    margin-top: 5px;
+    font-size: 1.2rem !important;
 }
 
 @media only screen and (max-width: 768px) {
