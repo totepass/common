@@ -10,7 +10,7 @@ export type User = {
   verified: boolean;
   createdAt: Date;
   updatedAt: Date;
-  deletedAt?: Date;
+  deletedAt?: Date | null;
 };
 
 export type Session = {
