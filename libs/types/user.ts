@@ -5,7 +5,7 @@ export type User = {
   invite?: string;
   language: "es" | "en" | string;
   name: string;
-  password: string;
+  password?: string;
   passwordConfirm?: string;
   verified: boolean;
   createdAt: Date;
