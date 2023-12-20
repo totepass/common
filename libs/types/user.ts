@@ -3,7 +3,7 @@ export type User = {
   avatar?: string;
   email: string;
   invite?: string;
-  language: "es" | "en";
+  language: "es" | "en" | string;
   name: string;
   password: string;
   passwordConfirm?: string;
