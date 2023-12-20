@@ -1,0 +1,68 @@
+/*!
+ * ----------------------------------------------------------------------------
+ * Halfmoon CSS
+ * Version: 2.0.1
+ * https://www.gethalfmoon.com
+ * Copyright (c) 2023, Tahmid Khan
+ * Licensed under MIT (https://www.gethalfmoon.com/license)
+ * ----------------------------------------------------------------------------
+ * The above notice must be included in its entirety when this file is used.
+ */
+
+/*!
+ * The following notice(s) is/are provided to honor the licenses of 3rd party 
+ * software used to build Halfmoon.
+ * ----------------------------------------------------------------------------
+ * Bootstrap (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * ----------------------------------------------------------------------------
+ */
+
+/**
+ * ----------------------------------------------------------------------------
+ * [ Collapse ]
+ * ----------------------------------------------------------------------------
+ */
+
+.fade {
+	transition: opacity 0.15s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.fade {
+		transition: none;
+	}
+}
+
+.fade:not(.show) {
+	opacity: 0;
+}
+
+.collapse:not(.show) {
+	display: none;
+}
+
+.collapsing {
+	height: 0;
+	overflow: hidden;
+	transition: height 0.35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.collapsing {
+		transition: none;
+	}
+}
+
+.collapsing.collapse-horizontal {
+	width: 0;
+	height: auto;
+	transition: width 0.35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.collapsing.collapse-horizontal {
+		transition: none;
+	}
+}

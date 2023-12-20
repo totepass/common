@@ -1,0 +1,64 @@
+/*!
+ * ----------------------------------------------------------------------------
+ * Halfmoon CSS
+ * Version: 2.0.1
+ * https://www.gethalfmoon.com
+ * Copyright (c) 2023, Tahmid Khan
+ * Licensed under MIT (https://www.gethalfmoon.com/license)
+ * ----------------------------------------------------------------------------
+ * The above notice must be included in its entirety when this file is used.
+ */
+
+/*!
+ * The following notice(s) is/are provided to honor the licenses of 3rd party 
+ * software used to build Halfmoon.
+ * ----------------------------------------------------------------------------
+ * Bootstrap (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * ----------------------------------------------------------------------------
+ */
+
+/**
+ * ----------------------------------------------------------------------------
+ * [ Focus ring ]
+ * ----------------------------------------------------------------------------
+ */
+
+.focus-ring:focus {
+	outline: 0 !important;
+	box-shadow: var(--bs-focus-ring-x, 0) var(--bs-focus-ring-y, 0) var(--bs-focus-ring-blur, 0)
+		var(--bs-focus-ring-width) var(--bs-focus-ring-color) !important;
+}
+
+.focus-ring-primary {
+	--bs-focus-ring-color: hsla(var(--bs-primary-hsl), var(--bs-focus-ring-opacity));
+}
+
+.focus-ring-secondary {
+	--bs-focus-ring-color: hsla(var(--bs-secondary-hsl), var(--bs-focus-ring-opacity));
+}
+
+.focus-ring-success {
+	--bs-focus-ring-color: hsla(var(--bs-success-hsl), var(--bs-focus-ring-opacity));
+}
+
+.focus-ring-info {
+	--bs-focus-ring-color: hsla(var(--bs-info-hsl), var(--bs-focus-ring-opacity));
+}
+
+.focus-ring-warning {
+	--bs-focus-ring-color: hsla(var(--bs-warning-hsl), var(--bs-focus-ring-opacity));
+}
+
+.focus-ring-danger {
+	--bs-focus-ring-color: hsla(var(--bs-danger-hsl), var(--bs-focus-ring-opacity));
+}
+
+.focus-ring-light {
+	--bs-focus-ring-color: hsla(var(--bs-light-hsl), var(--bs-focus-ring-opacity));
+}
+
+.focus-ring-dark {
+	--bs-focus-ring-color: hsla(var(--bs-dark-hsl), var(--bs-focus-ring-opacity));
+}

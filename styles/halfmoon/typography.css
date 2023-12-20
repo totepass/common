@@ -1,0 +1,143 @@
+/*!
+ * ----------------------------------------------------------------------------
+ * Halfmoon CSS
+ * Version: 2.0.1
+ * https://www.gethalfmoon.com
+ * Copyright (c) 2023, Tahmid Khan
+ * Licensed under MIT (https://www.gethalfmoon.com/license)
+ * ----------------------------------------------------------------------------
+ * The above notice must be included in its entirety when this file is used.
+ */
+
+/*!
+ * The following notice(s) is/are provided to honor the licenses of 3rd party 
+ * software used to build Halfmoon.
+ * ----------------------------------------------------------------------------
+ * Bootstrap (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * ----------------------------------------------------------------------------
+ */
+
+/**
+ * ----------------------------------------------------------------------------
+ * [ Typography ]
+ * ----------------------------------------------------------------------------
+ */
+
+.lead {
+	font-size: calc(var(--bs-font-size-base) + 0.25rem);
+}
+
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6 {
+	font-weight: var(--bs-font-weight-bold);
+	line-height: 1.2;
+}
+
+.display-1 {
+	font-size: calc((var(--bs-font-size-base) + 0.7rem) + 4.5vw);
+}
+
+@media (min-width: 1200px) {
+	.display-1 {
+		font-size: calc(var(--bs-font-size-base) + 3.875rem);
+	}
+}
+
+.display-2 {
+	font-size: calc((var(--bs-font-size-base) + 0.65rem) + 3.9vw);
+}
+
+@media (min-width: 1200px) {
+	.display-2 {
+		font-size: calc(var(--bs-font-size-base) + 3.375rem);
+	}
+}
+
+.display-3 {
+	font-size: calc((var(--bs-font-size-base) + 0.6rem) + 3.3vw);
+}
+
+@media (min-width: 1200px) {
+	.display-3 {
+		font-size: calc(var(--bs-font-size-base) + 2.875rem);
+	}
+}
+
+.display-4 {
+	font-size: calc((var(--bs-font-size-base) + 0.55rem) + 2.7vw);
+}
+
+@media (min-width: 1200px) {
+	.display-4 {
+		font-size: calc(var(--bs-font-size-base) + 2.375rem);
+	}
+}
+
+.display-5 {
+	font-size: calc((var(--bs-font-size-base) + 0.5rem) + 2.1vw);
+}
+
+@media (min-width: 1200px) {
+	.display-5 {
+		font-size: calc(var(--bs-font-size-base) + 1.875rem);
+	}
+}
+
+.display-6 {
+	font-size: calc((var(--bs-font-size-base) + 0.45rem) + 1.5vw);
+}
+
+@media (min-width: 1200px) {
+	.display-6 {
+		font-size: calc(var(--bs-font-size-base) + 1.375rem);
+	}
+}
+
+.list-unstyled {
+	padding-left: 0;
+	list-style: none;
+}
+
+.list-inline {
+	padding-left: 0;
+	list-style: none;
+}
+
+.list-inline-item {
+	display: inline-block;
+}
+
+.list-inline-item:not(:last-child) {
+	margin-right: 0.5rem;
+}
+
+.initialism {
+	font-size: var(--bs-relative-font-size-sm);
+	text-transform: uppercase;
+}
+
+.blockquote {
+	margin-bottom: 1rem;
+	font-size: calc(var(--bs-font-size-base) + 0.25rem);
+}
+
+.blockquote > :last-child {
+	margin-bottom: 0;
+}
+
+.blockquote-footer {
+	margin-top: -1rem;
+	margin-bottom: 1rem;
+	font-size: var(--bs-relative-font-size-sm);
+	color: var(--bs-secondary-color);
+}
+
+.blockquote-footer::before {
+	content: '— ';
+}

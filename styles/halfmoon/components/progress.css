@@ -1,0 +1,114 @@
+/*!
+ * ----------------------------------------------------------------------------
+ * Halfmoon CSS
+ * Version: 2.0.1
+ * https://www.gethalfmoon.com
+ * Copyright (c) 2023, Tahmid Khan
+ * Licensed under MIT (https://www.gethalfmoon.com/license)
+ * ----------------------------------------------------------------------------
+ * The above notice must be included in its entirety when this file is used.
+ */
+
+/*!
+ * The following notice(s) is/are provided to honor the licenses of 3rd party 
+ * software used to build Halfmoon.
+ * ----------------------------------------------------------------------------
+ * Bootstrap (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * ----------------------------------------------------------------------------
+ */
+
+/**
+ * ----------------------------------------------------------------------------
+ * [ Progress ]
+ * ----------------------------------------------------------------------------
+ */
+
+@keyframes progress-bar-stripes {
+	0% {
+		background-position-x: 0.625rem;
+	}
+}
+
+.progress,
+.progress-stacked {
+	--bs-progress-height: 0.625rem;
+	--bs-progress-font-size: 0.5rem;
+	--bs-progress-bg: var(--bs-actionbar-bg);
+	--bs-progress-border: var(--bs-progresstrack-border-width) solid var(--bs-actionbar-border-color);
+	--bs-progress-border-radius: var(--bs-border-radius-pill);
+	--bs-progress-box-shadow: var(--bs-progresstrack-box-shadow);
+	--bs-progress-bg-clip: var(--bs-progresstrack-bg-clip);
+	--bs-progress-bar-color: var(--bs-primary-foreground);
+	--bs-progress-bar-bg: var(--bs-primary);
+	--bs-progress-bar-transition: width 0.6s ease;
+	display: flex;
+	height: var(--bs-progress-height);
+	overflow: hidden;
+	font-size: var(--bs-progress-font-size);
+	background-color: var(--bs-progress-bg);
+	border: var(--bs-progress-border);
+	border-radius: var(--bs-progress-border-radius);
+	box-shadow: var(--bs-progress-box-shadow);
+	background-clip: var(--bs-progress-bg-clip);
+}
+
+.progress-bar {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+	color: var(--bs-progress-bar-color);
+	text-align: center;
+	white-space: nowrap;
+	background-color: var(--bs-progress-bar-bg);
+	transition: var(--bs-progress-bar-transition);
+	-webkit-font-smoothing: auto;
+	-moz-osx-font-smoothing: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.progress-bar {
+		transition: none;
+	}
+}
+
+.progress-bar-striped {
+	background-image: linear-gradient(
+		45deg,
+		hsla(var(--bs-primary-foreground-hsl), 0.15) 25%,
+		transparent 25%,
+		transparent 50%,
+		hsla(var(--bs-primary-foreground-hsl), 0.15) 50%,
+		hsla(var(--bs-primary-foreground-hsl), 0.15) 75%,
+		transparent 75%,
+		transparent
+	);
+	background-size: var(--bs-progress-height) var(--bs-progress-height);
+}
+
+.progress-stacked > .progress {
+	height: 100%;
+	overflow: visible;
+	font-size: inherit;
+	background-color: transparent;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	background-clip: border-box;
+}
+
+.progress-stacked > .progress > .progress-bar {
+	width: 100%;
+}
+
+.progress-bar-animated {
+	animation: 1s linear infinite progress-bar-stripes;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.progress-bar-animated {
+		animation: none;
+	}
+}

@@ -1,0 +1,108 @@
+/*!
+ * ----------------------------------------------------------------------------
+ * Halfmoon CSS
+ * Version: 2.0.1
+ * https://www.gethalfmoon.com
+ * Copyright (c) 2023, Tahmid Khan
+ * Licensed under MIT (https://www.gethalfmoon.com/license)
+ * ----------------------------------------------------------------------------
+ * The above notice must be included in its entirety when this file is used.
+ */
+
+/*!
+ * The following notice(s) is/are provided to honor the licenses of 3rd party 
+ * software used to build Halfmoon.
+ * ----------------------------------------------------------------------------
+ * Bootstrap (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * ----------------------------------------------------------------------------
+ */
+
+/**
+ * ----------------------------------------------------------------------------
+ * [ Float utilities ]
+ * ----------------------------------------------------------------------------
+ */
+
+.float-start {
+	float: left !important;
+}
+
+.float-end {
+	float: right !important;
+}
+
+.float-none {
+	float: none !important;
+}
+
+@media (min-width: 576px) {
+	.float-sm-start {
+		float: left !important;
+	}
+
+	.float-sm-end {
+		float: right !important;
+	}
+
+	.float-sm-none {
+		float: none !important;
+	}
+}
+
+@media (min-width: 768px) {
+	.float-md-start {
+		float: left !important;
+	}
+
+	.float-md-end {
+		float: right !important;
+	}
+
+	.float-md-none {
+		float: none !important;
+	}
+}
+
+@media (min-width: 992px) {
+	.float-lg-start {
+		float: left !important;
+	}
+
+	.float-lg-end {
+		float: right !important;
+	}
+
+	.float-lg-none {
+		float: none !important;
+	}
+}
+
+@media (min-width: 1200px) {
+	.float-xl-start {
+		float: left !important;
+	}
+
+	.float-xl-end {
+		float: right !important;
+	}
+
+	.float-xl-none {
+		float: none !important;
+	}
+}
+
+@media (min-width: 1400px) {
+	.float-xxl-start {
+		float: left !important;
+	}
+
+	.float-xxl-end {
+		float: right !important;
+	}
+
+	.float-xxl-none {
+		float: none !important;
+	}
+}

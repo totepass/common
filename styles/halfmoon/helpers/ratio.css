@@ -1,0 +1,61 @@
+/*!
+ * ----------------------------------------------------------------------------
+ * Halfmoon CSS
+ * Version: 2.0.1
+ * https://www.gethalfmoon.com
+ * Copyright (c) 2023, Tahmid Khan
+ * Licensed under MIT (https://www.gethalfmoon.com/license)
+ * ----------------------------------------------------------------------------
+ * The above notice must be included in its entirety when this file is used.
+ */
+
+/*!
+ * The following notice(s) is/are provided to honor the licenses of 3rd party 
+ * software used to build Halfmoon.
+ * ----------------------------------------------------------------------------
+ * Bootstrap (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * ----------------------------------------------------------------------------
+ */
+
+/**
+ * ----------------------------------------------------------------------------
+ * [ Ratio ]
+ * ----------------------------------------------------------------------------
+ */
+
+.ratio {
+	position: relative;
+	width: 100%;
+}
+
+.ratio::before {
+	display: block;
+	padding-top: var(--bs-aspect-ratio);
+	content: '';
+}
+
+.ratio > * {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.ratio-1x1 {
+	--bs-aspect-ratio: 100%;
+}
+
+.ratio-4x3 {
+	--bs-aspect-ratio: 75%;
+}
+
+.ratio-16x9 {
+	--bs-aspect-ratio: 56.25%;
+}
+
+.ratio-21x9 {
+	--bs-aspect-ratio: 42.8571428571%;
+}

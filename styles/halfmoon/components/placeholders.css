@@ -1,0 +1,87 @@
+/*!
+ * ----------------------------------------------------------------------------
+ * Halfmoon CSS
+ * Version: 2.0.1
+ * https://www.gethalfmoon.com
+ * Copyright (c) 2023, Tahmid Khan
+ * Licensed under MIT (https://www.gethalfmoon.com/license)
+ * ----------------------------------------------------------------------------
+ * The above notice must be included in its entirety when this file is used.
+ */
+
+/*!
+ * The following notice(s) is/are provided to honor the licenses of 3rd party 
+ * software used to build Halfmoon.
+ * ----------------------------------------------------------------------------
+ * Bootstrap (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * ----------------------------------------------------------------------------
+ */
+
+/**
+ * ----------------------------------------------------------------------------
+ * [ Placeholders ]
+ * ----------------------------------------------------------------------------
+ */
+
+.placeholder {
+	display: inline-block;
+	min-height: 1em;
+	vertical-align: middle;
+	cursor: wait;
+	background-color: currentcolor;
+	opacity: 0.5;
+}
+
+.placeholder.btn::before {
+	display: inline-block;
+	content: '';
+}
+
+.placeholder-xs {
+	min-height: 0.6em;
+}
+
+.placeholder-sm {
+	min-height: 0.8em;
+}
+
+.placeholder-lg {
+	min-height: 1.2em;
+}
+
+.placeholder-glow .placeholder {
+	animation: placeholder-glow 2s ease-in-out infinite;
+}
+
+@keyframes placeholder-glow {
+	50% {
+		opacity: 0.2;
+	}
+}
+
+.placeholder-wave {
+	-webkit-mask-image: linear-gradient(
+		130deg,
+		var(--bs-black) 55%,
+		hsla(var(--bs-black-hsl), 0.65) 75%,
+		var(--bs-black) 95%
+	);
+	mask-image: linear-gradient(
+		130deg,
+		var(--bs-black) 55%,
+		hsla(var(--bs-black-hsl), 0.65) 75%,
+		var(--bs-black) 95%
+	);
+	-webkit-mask-size: 200% 100%;
+	mask-size: 200% 100%;
+	animation: placeholder-wave 2s linear infinite;
+}
+
+@keyframes placeholder-wave {
+	100% {
+		-webkit-mask-position: -200% 0%;
+		mask-position: -200% 0%;
+	}
+}

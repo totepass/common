@@ -1,0 +1,443 @@
+/*!
+ * ----------------------------------------------------------------------------
+ * Halfmoon CSS
+ * Version: 2.0.1
+ * https://www.gethalfmoon.com
+ * Copyright (c) 2023, Tahmid Khan
+ * Licensed under MIT (https://www.gethalfmoon.com/license)
+ * ----------------------------------------------------------------------------
+ * The above notice must be included in its entirety when this file is used.
+ */
+
+/*!
+ * The following notice(s) is/are provided to honor the licenses of 3rd party 
+ * software used to build Halfmoon.
+ * ----------------------------------------------------------------------------
+ * Bootstrap (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * ----------------------------------------------------------------------------
+ */
+
+/**
+ * ----------------------------------------------------------------------------
+ * [ List group ]
+ * ----------------------------------------------------------------------------
+ */
+
+.list-group {
+	--bs-list-group-color: var(--bs-body-color);
+	--bs-list-group-bg: transparent;
+	--bs-list-group-border-color: var(--bs-border-color);
+	--bs-list-group-border-width: var(--bs-border-width);
+	--bs-list-group-border-radius: var(--bs-border-radius);
+	--bs-list-group-item-padding-x: 1rem;
+	--bs-list-group-item-padding-y: 0.375rem;
+	--bs-list-group-action-color: var(--bs-list-group-color);
+	--bs-list-group-action-hover-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-hover-bg: hsla(var(--bs-black-hsl), 0.06);
+	--bs-list-group-action-active-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-active-bg: hsla(var(--bs-black-hsl), 0.09);
+	--bs-list-group-disabled-color: var(--bs-secondary-color);
+	--bs-list-group-disabled-bg: hsla(var(--bs-black-hsl), 0.03);
+	--bs-list-group-active-color: var(--bs-primary-foreground);
+	--bs-list-group-active-bg: var(--bs-primary);
+	--bs-list-group-active-border-color: var(--bs-primary);
+	display: flex;
+	flex-direction: column;
+	padding-left: 0;
+	margin-bottom: 0;
+	border-radius: var(--bs-list-group-border-radius);
+}
+
+[data-bs-theme='dark'] .list-group {
+	--bs-list-group-action-hover-bg: hsla(var(--bs-white-hsl), 0.05);
+	--bs-list-group-action-active-bg: hsla(var(--bs-white-hsl), 0.075);
+	--bs-list-group-disabled-bg: hsla(var(--bs-white-hsl), 0.025);
+}
+
+.list-group-numbered {
+	list-style-type: none;
+	counter-reset: section;
+}
+
+.list-group-numbered > .list-group-item::before {
+	content: counters(section, '.') '. ';
+	counter-increment: section;
+}
+
+.list-group-item-action {
+	width: 100%;
+	color: var(--bs-list-group-action-color);
+	text-align: inherit;
+}
+
+.list-group-item-action:hover,
+.list-group-item-action:focus {
+	z-index: 1;
+	color: var(--bs-list-group-action-hover-color);
+	text-decoration: none;
+	background-color: var(--bs-list-group-action-hover-bg);
+}
+
+.list-group-item-action:active {
+	color: var(--bs-list-group-action-active-color);
+	background-color: var(--bs-list-group-action-active-bg);
+}
+
+.list-group-item {
+	position: relative;
+	display: block;
+	padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
+	color: var(--bs-list-group-color);
+	text-decoration: none;
+	background-color: var(--bs-list-group-bg);
+	border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
+	-webkit-font-smoothing: var(--bs-body-webkit-font-smoothing);
+	-moz-osx-font-smoothing: var(--bs-body-moz-osx-font-smoothing);
+}
+
+.list-group-item:first-child {
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
+}
+
+.list-group-item:last-child {
+	border-bottom-right-radius: inherit;
+	border-bottom-left-radius: inherit;
+}
+
+.list-group-item.disabled,
+.list-group-item:disabled {
+	color: var(--bs-list-group-disabled-color);
+	pointer-events: none;
+	background-color: var(--bs-list-group-disabled-bg);
+}
+
+.list-group-item.active {
+	z-index: 2;
+	color: var(--bs-list-group-active-color);
+	background-color: var(--bs-list-group-active-bg);
+	border-color: var(--bs-list-group-active-border-color);
+	-webkit-font-smoothing: auto;
+	-moz-osx-font-smoothing: auto;
+}
+
+.list-group-item + .list-group-item {
+	border-top-width: 0;
+}
+
+.list-group-item + .list-group-item.active {
+	margin-top: calc(-1 * var(--bs-list-group-border-width));
+	border-top-width: var(--bs-list-group-border-width);
+}
+
+.list-group-horizontal {
+	flex-direction: row;
+}
+
+.list-group-horizontal > .list-group-item:first-child:not(:last-child) {
+	border-bottom-left-radius: var(--bs-list-group-border-radius);
+	border-top-right-radius: 0;
+}
+
+.list-group-horizontal > .list-group-item:last-child:not(:first-child) {
+	border-top-right-radius: var(--bs-list-group-border-radius);
+	border-bottom-left-radius: 0;
+}
+
+.list-group-horizontal > .list-group-item.active {
+	margin-top: 0;
+}
+
+.list-group-horizontal > .list-group-item + .list-group-item {
+	border-top-width: var(--bs-list-group-border-width);
+	border-left-width: 0;
+}
+
+.list-group-horizontal > .list-group-item + .list-group-item.active {
+	margin-left: calc(-1 * var(--bs-list-group-border-width));
+	border-left-width: var(--bs-list-group-border-width);
+}
+
+@media (min-width: 576px) {
+	.list-group-horizontal-sm {
+		flex-direction: row;
+	}
+
+	.list-group-horizontal-sm > .list-group-item:first-child:not(:last-child) {
+		border-bottom-left-radius: var(--bs-list-group-border-radius);
+		border-top-right-radius: 0;
+	}
+
+	.list-group-horizontal-sm > .list-group-item:last-child:not(:first-child) {
+		border-top-right-radius: var(--bs-list-group-border-radius);
+		border-bottom-left-radius: 0;
+	}
+
+	.list-group-horizontal-sm > .list-group-item.active {
+		margin-top: 0;
+	}
+
+	.list-group-horizontal-sm > .list-group-item + .list-group-item {
+		border-top-width: var(--bs-list-group-border-width);
+		border-left-width: 0;
+	}
+
+	.list-group-horizontal-sm > .list-group-item + .list-group-item.active {
+		margin-left: calc(-1 * var(--bs-list-group-border-width));
+		border-left-width: var(--bs-list-group-border-width);
+	}
+}
+
+@media (min-width: 768px) {
+	.list-group-horizontal-md {
+		flex-direction: row;
+	}
+
+	.list-group-horizontal-md > .list-group-item:first-child:not(:last-child) {
+		border-bottom-left-radius: var(--bs-list-group-border-radius);
+		border-top-right-radius: 0;
+	}
+
+	.list-group-horizontal-md > .list-group-item:last-child:not(:first-child) {
+		border-top-right-radius: var(--bs-list-group-border-radius);
+		border-bottom-left-radius: 0;
+	}
+
+	.list-group-horizontal-md > .list-group-item.active {
+		margin-top: 0;
+	}
+
+	.list-group-horizontal-md > .list-group-item + .list-group-item {
+		border-top-width: var(--bs-list-group-border-width);
+		border-left-width: 0;
+	}
+
+	.list-group-horizontal-md > .list-group-item + .list-group-item.active {
+		margin-left: calc(-1 * var(--bs-list-group-border-width));
+		border-left-width: var(--bs-list-group-border-width);
+	}
+}
+
+@media (min-width: 992px) {
+	.list-group-horizontal-lg {
+		flex-direction: row;
+	}
+
+	.list-group-horizontal-lg > .list-group-item:first-child:not(:last-child) {
+		border-bottom-left-radius: var(--bs-list-group-border-radius);
+		border-top-right-radius: 0;
+	}
+
+	.list-group-horizontal-lg > .list-group-item:last-child:not(:first-child) {
+		border-top-right-radius: var(--bs-list-group-border-radius);
+		border-bottom-left-radius: 0;
+	}
+
+	.list-group-horizontal-lg > .list-group-item.active {
+		margin-top: 0;
+	}
+
+	.list-group-horizontal-lg > .list-group-item + .list-group-item {
+		border-top-width: var(--bs-list-group-border-width);
+		border-left-width: 0;
+	}
+
+	.list-group-horizontal-lg > .list-group-item + .list-group-item.active {
+		margin-left: calc(-1 * var(--bs-list-group-border-width));
+		border-left-width: var(--bs-list-group-border-width);
+	}
+}
+
+@media (min-width: 1200px) {
+	.list-group-horizontal-xl {
+		flex-direction: row;
+	}
+
+	.list-group-horizontal-xl > .list-group-item:first-child:not(:last-child) {
+		border-bottom-left-radius: var(--bs-list-group-border-radius);
+		border-top-right-radius: 0;
+	}
+
+	.list-group-horizontal-xl > .list-group-item:last-child:not(:first-child) {
+		border-top-right-radius: var(--bs-list-group-border-radius);
+		border-bottom-left-radius: 0;
+	}
+
+	.list-group-horizontal-xl > .list-group-item.active {
+		margin-top: 0;
+	}
+
+	.list-group-horizontal-xl > .list-group-item + .list-group-item {
+		border-top-width: var(--bs-list-group-border-width);
+		border-left-width: 0;
+	}
+
+	.list-group-horizontal-xl > .list-group-item + .list-group-item.active {
+		margin-left: calc(-1 * var(--bs-list-group-border-width));
+		border-left-width: var(--bs-list-group-border-width);
+	}
+}
+
+@media (min-width: 1400px) {
+	.list-group-horizontal-xxl {
+		flex-direction: row;
+	}
+
+	.list-group-horizontal-xxl > .list-group-item:first-child:not(:last-child) {
+		border-bottom-left-radius: var(--bs-list-group-border-radius);
+		border-top-right-radius: 0;
+	}
+
+	.list-group-horizontal-xxl > .list-group-item:last-child:not(:first-child) {
+		border-top-right-radius: var(--bs-list-group-border-radius);
+		border-bottom-left-radius: 0;
+	}
+
+	.list-group-horizontal-xxl > .list-group-item.active {
+		margin-top: 0;
+	}
+
+	.list-group-horizontal-xxl > .list-group-item + .list-group-item {
+		border-top-width: var(--bs-list-group-border-width);
+		border-left-width: 0;
+	}
+
+	.list-group-horizontal-xxl > .list-group-item + .list-group-item.active {
+		margin-left: calc(-1 * var(--bs-list-group-border-width));
+		border-left-width: var(--bs-list-group-border-width);
+	}
+}
+
+.list-group-flush {
+	border-radius: 0;
+}
+
+.list-group-flush > .list-group-item {
+	border-width: 0 0 var(--bs-list-group-border-width);
+}
+
+.list-group-flush > .list-group-item:last-child {
+	border-bottom-width: 0;
+}
+
+/* Primary list group item */
+
+.list-group-item-primary {
+	--bs-list-group-color: var(--bs-body-color);
+	--bs-list-group-bg: hsla(var(--bs-primary-hsl), 0.125);
+	--bs-list-group-border-color: var(--bs-border-color);
+	--bs-list-group-action-hover-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-hover-bg: hsla(var(--bs-primary-hsl), 0.2);
+	--bs-list-group-action-active-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-active-bg: hsla(var(--bs-primary-hsl), 0.25);
+	--bs-list-group-active-color: var(--bs-primary-foreground);
+	--bs-list-group-active-bg: var(--bs-primary-hover-bg);
+	--bs-list-group-active-border-color: var(--bs-primary-hover-bg);
+}
+
+/* Secondary list group item */
+
+.list-group-item-secondary {
+	--bs-list-group-color: var(--bs-body-color);
+	--bs-list-group-bg: hsla(var(--bs-secondary-hsl), 0.125);
+	--bs-list-group-border-color: var(--bs-border-color);
+	--bs-list-group-action-hover-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-hover-bg: hsla(var(--bs-secondary-hsl), 0.2);
+	--bs-list-group-action-active-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-active-bg: hsla(var(--bs-secondary-hsl), 0.25);
+	--bs-list-group-active-color: var(--bs-secondary-foreground);
+	--bs-list-group-active-bg: var(--bs-secondary-hover-bg);
+	--bs-list-group-active-border-color: var(--bs-secondary-hover-bg);
+}
+
+/* Success list group item */
+
+.list-group-item-success {
+	--bs-list-group-color: var(--bs-body-color);
+	--bs-list-group-bg: hsla(var(--bs-success-hsl), 0.125);
+	--bs-list-group-border-color: var(--bs-border-color);
+	--bs-list-group-action-hover-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-hover-bg: hsla(var(--bs-success-hsl), 0.2);
+	--bs-list-group-action-active-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-active-bg: hsla(var(--bs-success-hsl), 0.25);
+	--bs-list-group-active-color: var(--bs-success-foreground);
+	--bs-list-group-active-bg: var(--bs-success-hover-bg);
+	--bs-list-group-active-border-color: var(--bs-success-hover-bg);
+}
+
+/* Info list group item */
+
+.list-group-item-info {
+	--bs-list-group-color: var(--bs-body-color);
+	--bs-list-group-bg: hsla(var(--bs-info-hsl), 0.125);
+	--bs-list-group-border-color: var(--bs-border-color);
+	--bs-list-group-action-hover-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-hover-bg: hsla(var(--bs-info-hsl), 0.2);
+	--bs-list-group-action-active-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-active-bg: hsla(var(--bs-info-hsl), 0.25);
+	--bs-list-group-active-color: var(--bs-info-foreground);
+	--bs-list-group-active-bg: var(--bs-info-hover-bg);
+	--bs-list-group-active-border-color: var(--bs-info-hover-bg);
+}
+
+/* Warning list group item */
+
+.list-group-item-warning {
+	--bs-list-group-color: var(--bs-body-color);
+	--bs-list-group-bg: hsla(var(--bs-warning-hsl), 0.125);
+	--bs-list-group-border-color: var(--bs-border-color);
+	--bs-list-group-action-hover-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-hover-bg: hsla(var(--bs-warning-hsl), 0.2);
+	--bs-list-group-action-active-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-active-bg: hsla(var(--bs-warning-hsl), 0.25);
+	--bs-list-group-active-color: var(--bs-warning-foreground);
+	--bs-list-group-active-bg: var(--bs-warning-hover-bg);
+	--bs-list-group-active-border-color: var(--bs-warning-hover-bg);
+}
+
+/* Danger list group item */
+
+.list-group-item-danger {
+	--bs-list-group-color: var(--bs-body-color);
+	--bs-list-group-bg: hsla(var(--bs-danger-hsl), 0.125);
+	--bs-list-group-border-color: var(--bs-border-color);
+	--bs-list-group-action-hover-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-hover-bg: hsla(var(--bs-danger-hsl), 0.2);
+	--bs-list-group-action-active-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-active-bg: hsla(var(--bs-danger-hsl), 0.25);
+	--bs-list-group-active-color: var(--bs-danger-foreground);
+	--bs-list-group-active-bg: var(--bs-danger-hover-bg);
+	--bs-list-group-active-border-color: var(--bs-danger-hover-bg);
+}
+
+/* Light list group item */
+
+.list-group-item-light {
+	--bs-list-group-color: var(--bs-body-color);
+	--bs-list-group-bg: hsla(var(--bs-light-hsl), 0.125);
+	--bs-list-group-border-color: var(--bs-border-color);
+	--bs-list-group-action-hover-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-hover-bg: hsla(var(--bs-light-hsl), 0.2);
+	--bs-list-group-action-active-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-active-bg: hsla(var(--bs-light-hsl), 0.25);
+	--bs-list-group-active-color: var(--bs-light-foreground);
+	--bs-list-group-active-bg: var(--bs-light-hover-bg);
+	--bs-list-group-active-border-color: var(--bs-light-hover-bg);
+}
+
+/* Dark list group item */
+
+.list-group-item-dark {
+	--bs-list-group-color: var(--bs-body-color);
+	--bs-list-group-bg: hsla(var(--bs-dark-hsl), 0.125);
+	--bs-list-group-border-color: var(--bs-border-color);
+	--bs-list-group-action-hover-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-hover-bg: hsla(var(--bs-dark-hsl), 0.2);
+	--bs-list-group-action-active-color: var(--bs-list-group-action-color);
+	--bs-list-group-action-active-bg: hsla(var(--bs-dark-hsl), 0.25);
+	--bs-list-group-active-color: var(--bs-dark-foreground);
+	--bs-list-group-active-bg: var(--bs-dark-hover-bg);
+	--bs-list-group-active-border-color: var(--bs-dark-hover-bg);
+}

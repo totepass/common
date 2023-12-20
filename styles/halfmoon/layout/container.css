@@ -1,0 +1,87 @@
+/*!
+ * ----------------------------------------------------------------------------
+ * Halfmoon CSS
+ * Version: 2.0.1
+ * https://www.gethalfmoon.com
+ * Copyright (c) 2023, Tahmid Khan
+ * Licensed under MIT (https://www.gethalfmoon.com/license)
+ * ----------------------------------------------------------------------------
+ * The above notice must be included in its entirety when this file is used.
+ */
+
+/*!
+ * The following notice(s) is/are provided to honor the licenses of 3rd party 
+ * software used to build Halfmoon.
+ * ----------------------------------------------------------------------------
+ * Bootstrap (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * ----------------------------------------------------------------------------
+ */
+
+/**
+ * ----------------------------------------------------------------------------
+ * [ Container ]
+ * ----------------------------------------------------------------------------
+ */
+
+ .container,
+ .container-fluid,
+ .container-xxl,
+ .container-xl,
+ .container-lg,
+ .container-md,
+ .container-sm {
+     --bs-gutter-x: var(--bs-spacer-4);
+     --bs-gutter-y: 0;
+     width: 100%;
+     padding-right: calc(var(--bs-gutter-x) * 0.5);
+     padding-left: calc(var(--bs-gutter-x) * 0.5);
+     margin-right: auto;
+     margin-left: auto;
+ }
+ 
+ @media (min-width: 576px) {
+     .container-sm,
+     .container {
+         max-width: var(--bs-container-max-width-sm);
+     }
+ }
+ 
+ @media (min-width: 768px) {
+     .container-md,
+     .container-sm,
+     .container {
+         max-width: var(--bs-container-max-width-md);
+     }
+ }
+ 
+ @media (min-width: 992px) {
+     .container-lg,
+     .container-md,
+     .container-sm,
+     .container {
+         max-width: var(--bs-container-max-width-lg);
+     }
+ }
+ 
+ @media (min-width: 1200px) {
+     .container-xl,
+     .container-lg,
+     .container-md,
+     .container-sm,
+     .container {
+         max-width: var(--bs-container-max-width-xl);
+     }
+ }
+ 
+ @media (min-width: 1400px) {
+     .container-xxl,
+     .container-xl,
+     .container-lg,
+     .container-md,
+     .container-sm,
+     .container {
+         max-width: var(--bs-container-max-width-xxl);
+     }
+ }

@@ -1,0 +1,58 @@
+/*!
+ * ----------------------------------------------------------------------------
+ * Halfmoon CSS
+ * Version: 2.0.1
+ * https://www.gethalfmoon.com
+ * Copyright (c) 2023, Tahmid Khan
+ * Licensed under MIT (https://www.gethalfmoon.com/license)
+ * ----------------------------------------------------------------------------
+ * The above notice must be included in its entirety when this file is used.
+ */
+
+/*!
+ * The following notice(s) is/are provided to honor the licenses of 3rd party 
+ * software used to build Halfmoon.
+ * ----------------------------------------------------------------------------
+ * Bootstrap (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * ----------------------------------------------------------------------------
+ */
+
+/**
+ * ----------------------------------------------------------------------------
+ * [ Badge ]
+ * ----------------------------------------------------------------------------
+ */
+
+.badge {
+	--bs-badge-padding-x: var(--bs-relative-font-size-2xs);
+	--bs-badge-padding-y: var(--bs-relative-font-size-4xs);
+	--bs-badge-font-size: var(--bs-relative-font-size-sm);
+	--bs-badge-font-weight: var(--bs-font-weight-normal);
+	--bs-badge-color: var(--bs-secondary-foreground);
+	--bs-badge-bg: var(--bs-secondary);
+	--bs-badge-border-radius: var(--bs-border-radius);
+	display: inline-block;
+	padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+	font-size: var(--bs-badge-font-size);
+	font-weight: var(--bs-badge-font-weight);
+	line-height: 1;
+	color: var(--bs-badge-color);
+	background-color: var(--bs-badge-bg);
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	border-radius: var(--bs-badge-border-radius);
+	-webkit-font-smoothing: auto;
+	-moz-osx-font-smoothing: auto;
+}
+
+.badge:empty {
+	display: none;
+}
+
+.btn .badge {
+	position: relative;
+	top: -1px;
+}

@@ -1,0 +1,189 @@
+/*!
+ * ----------------------------------------------------------------------------
+ * Halfmoon CSS
+ * Version: 2.0.1
+ * https://www.gethalfmoon.com
+ * Copyright (c) 2023, Tahmid Khan
+ * Licensed under MIT (https://www.gethalfmoon.com/license)
+ * ----------------------------------------------------------------------------
+ * The above notice must be included in its entirety when this file is used.
+ */
+
+/*!
+ * The following notice(s) is/are provided to honor the licenses of 3rd party 
+ * software used to build Halfmoon.
+ * ----------------------------------------------------------------------------
+ * Bootstrap (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * ----------------------------------------------------------------------------
+ */
+
+/**
+ * ----------------------------------------------------------------------------
+ * [ Navs and tabs ]
+ * ----------------------------------------------------------------------------
+ */
+
+.nav {
+	--bs-nav-link-padding-x: 0.5rem;
+	--bs-nav-link-padding-y: 0.25rem;
+	--bs-nav-link-font-weight: ;
+	--bs-nav-link-color: var(--bs-link-color);
+	--bs-nav-link-hover-color: var(--bs-link-hover-color);
+	--bs-nav-link-disabled-color: var(--bs-tertiary-color);
+	--bs-nav-link-webkit-font-smoothing: auto;
+	--bs-nav-link-moz-osx-font-smoothing: auto;
+	display: flex;
+	flex-wrap: wrap;
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+}
+
+.nav-link {
+	display: block;
+	padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+	font-size: var(--bs-nav-link-font-size);
+	font-weight: var(--bs-nav-link-font-weight);
+	color: var(--bs-nav-link-color);
+	text-decoration: none;
+	background: none;
+	border: 0;
+	-webkit-font-smoothing: var(--bs-nav-link-webkit-font-smoothing);
+	-moz-osx-font-smoothing: var(--bs-nav-link-moz-osx-font-smoothing);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+	color: var(--bs-nav-link-hover-color);
+}
+
+.nav-link:focus-visible {
+	outline: 0;
+	box-shadow: 0 0 0 var(--bs-focus-ring-width) hsla(var(--bs-action-focus-shadow-hsl), 0.5);
+}
+
+.nav-link.disabled,
+.nav-link:disabled {
+	color: var(--bs-nav-link-disabled-color);
+	pointer-events: none;
+	cursor: default;
+}
+
+.nav-tabs {
+	--bs-nav-link-color: var(--bs-body-color);
+	--bs-nav-link-hover-color: var(--bs-nav-link-color);
+	--bs-nav-link-webkit-font-smoothing: var(--bs-body-webkit-font-smoothing);
+	--bs-nav-link-moz-osx-font-smoothing: var(--bs-body-moz-osx-font-smoothing);
+	--bs-nav-tabs-border-width: var(--bs-border-width);
+	--bs-nav-tabs-border-color: var(--bs-border-color);
+	--bs-nav-tabs-border-radius: var(--bs-border-radius);
+	--bs-nav-tabs-link-hover-border-color: var(--bs-border-color-translucent)
+		var(--bs-border-color-translucent) transparent;
+	--bs-nav-tabs-link-active-color: var(--bs-nav-link-color);
+	--bs-nav-tabs-link-active-bg: var(--bs-content-bg);
+	--bs-nav-tabs-link-active-border-color: var(--bs-nav-tabs-border-color)
+		var(--bs-nav-tabs-border-color) var(--bs-nav-tabs-link-active-bg);
+	border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
+}
+
+.nav-tabs .nav-link {
+	margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
+	border: var(--bs-nav-tabs-border-width) solid transparent;
+	border-top-left-radius: var(--bs-nav-tabs-border-radius);
+	border-top-right-radius: var(--bs-nav-tabs-border-radius);
+}
+
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+	isolation: isolate;
+	border-color: var(--bs-nav-tabs-link-hover-border-color);
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+	color: var(--bs-nav-tabs-link-active-color);
+	background-color: var(--bs-nav-tabs-link-active-bg);
+	border-color: var(--bs-nav-tabs-link-active-border-color);
+}
+
+.nav-tabs .dropdown-menu {
+	margin-top: calc(-1 * var(--bs-nav-tabs-border-width));
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.nav-pills {
+	--bs-nav-link-color: var(--bs-body-color);
+	--bs-nav-link-hover-color: var(--bs-secondary-color);
+	--bs-nav-link-webkit-font-smoothing: var(--bs-body-webkit-font-smoothing);
+	--bs-nav-link-moz-osx-font-smoothing: var(--bs-body-moz-osx-font-smoothing);
+	--bs-nav-pills-border-radius: var(--bs-border-radius);
+	--bs-nav-pills-link-active-color: var(--bs-primary-foreground);
+	--bs-nav-pills-link-active-bg: var(--bs-primary);
+}
+
+.nav-pills .nav-link {
+	border-radius: var(--bs-nav-pills-border-radius);
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+	color: var(--bs-nav-pills-link-active-color);
+	background-color: var(--bs-nav-pills-link-active-bg);
+	-webkit-font-smoothing: auto;
+	-moz-osx-font-smoothing: auto;
+}
+
+.nav-underline {
+	--bs-nav-link-color: var(--bs-body-color);
+	--bs-nav-link-hover-color: var(--bs-secondary-color);
+	--bs-nav-link-webkit-font-smoothing: var(--bs-body-webkit-font-smoothing);
+	--bs-nav-link-moz-osx-font-smoothing: var(--bs-body-moz-osx-font-smoothing);
+	--bs-nav-underline-gap: 1rem;
+	--bs-nav-underline-border-width: 0.125rem;
+	--bs-nav-underline-link-padding: var(--bs-nav-link-padding-y) 0
+		calc(var(--bs-nav-link-padding-y) + var(--bs-nav-underline-border-width)) 0;
+	--bs-nav-underline-link-active-color: var(--bs-link-color);
+	gap: var(--bs-nav-underline-gap);
+}
+
+.nav-underline .nav-link {
+	padding: var(--bs-nav-underline-link-padding);
+	border-bottom: var(--bs-nav-underline-border-width) solid transparent;
+}
+
+.nav-underline .nav-link.active,
+.nav-underline .show > .nav-link {
+	color: var(--bs-nav-underline-link-active-color);
+	border-bottom-color: currentcolor;
+	-webkit-font-smoothing: auto;
+	-moz-osx-font-smoothing: auto;
+}
+
+.nav-fill > .nav-link,
+.nav-fill .nav-item {
+	flex: 1 1 auto;
+	text-align: center;
+}
+
+.nav-justified > .nav-link,
+.nav-justified .nav-item {
+	flex-basis: 0;
+	flex-grow: 1;
+	text-align: center;
+}
+
+.nav-fill .nav-item .nav-link,
+.nav-justified .nav-item .nav-link {
+	width: 100%;
+}
+
+.tab-content > .tab-pane {
+	display: none;
+}
+
+.tab-content > .active {
+	display: block;
+}

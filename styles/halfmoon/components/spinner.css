@@ -1,0 +1,92 @@
+/*!
+ * ----------------------------------------------------------------------------
+ * Halfmoon CSS
+ * Version: 2.0.1
+ * https://www.gethalfmoon.com
+ * Copyright (c) 2023, Tahmid Khan
+ * Licensed under MIT (https://www.gethalfmoon.com/license)
+ * ----------------------------------------------------------------------------
+ * The above notice must be included in its entirety when this file is used.
+ */
+
+/*!
+ * The following notice(s) is/are provided to honor the licenses of 3rd party 
+ * software used to build Halfmoon.
+ * ----------------------------------------------------------------------------
+ * Bootstrap (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * ----------------------------------------------------------------------------
+ */
+
+/**
+ * ----------------------------------------------------------------------------
+ * [ Spinner ]
+ * ----------------------------------------------------------------------------
+ */
+
+.spinner-grow,
+.spinner-border {
+	display: inline-block;
+	width: var(--bs-spinner-width);
+	height: var(--bs-spinner-height);
+	vertical-align: var(--bs-spinner-vertical-align);
+	border-radius: 50%;
+	animation: var(--bs-spinner-animation-speed) linear infinite var(--bs-spinner-animation-name);
+}
+
+@keyframes spinner-border {
+	to {
+		transform: rotate(360deg) /* rtl:ignore */;
+	}
+}
+
+.spinner-border {
+	--bs-spinner-width: calc(var(--bs-font-size-base) * 2);
+	--bs-spinner-height: calc(var(--bs-font-size-base) * 2);
+	--bs-spinner-vertical-align: calc(-1 * var(--bs-relative-font-size-6xs));
+	--bs-spinner-border-width: var(--bs-relative-font-size-4xs);
+	--bs-spinner-animation-speed: 0.75s;
+	--bs-spinner-animation-name: spinner-border;
+	border: var(--bs-spinner-border-width) solid currentcolor;
+	border-right-color: transparent;
+}
+
+.spinner-border-sm {
+	--bs-spinner-width: var(--bs-font-size-base);
+	--bs-spinner-height: var(--bs-font-size-base);
+	--bs-spinner-border-width: var(--bs-relative-font-size-6xs);
+}
+
+@keyframes spinner-grow {
+	0% {
+		transform: scale(0);
+	}
+
+	50% {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.spinner-grow {
+	--bs-spinner-width: calc(var(--bs-font-size-base) * 2);
+	--bs-spinner-height: calc(var(--bs-font-size-base) * 2);
+	--bs-spinner-vertical-align: calc(-1 * var(--bs-relative-font-size-6xs));
+	--bs-spinner-animation-speed: 0.75s;
+	--bs-spinner-animation-name: spinner-grow;
+	background-color: currentcolor;
+	opacity: 0;
+}
+
+.spinner-grow-sm {
+	--bs-spinner-width: var(--bs-font-size-base);
+	--bs-spinner-height: var(--bs-font-size-base);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.spinner-border,
+	.spinner-grow {
+		--bs-spinner-animation-speed: 1.5s;
+	}
+}

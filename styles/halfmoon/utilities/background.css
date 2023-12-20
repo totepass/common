@@ -1,0 +1,157 @@
+/*!
+ * ----------------------------------------------------------------------------
+ * Halfmoon CSS
+ * Version: 2.0.1
+ * https://www.gethalfmoon.com
+ * Copyright (c) 2023, Tahmid Khan
+ * Licensed under MIT (https://www.gethalfmoon.com/license)
+ * ----------------------------------------------------------------------------
+ * The above notice must be included in its entirety when this file is used.
+ */
+
+/*!
+ * The following notice(s) is/are provided to honor the licenses of 3rd party 
+ * software used to build Halfmoon.
+ * ----------------------------------------------------------------------------
+ * Bootstrap (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * ----------------------------------------------------------------------------
+ */
+
+/**
+ * ----------------------------------------------------------------------------
+ * [ Background utilities ]
+ * ----------------------------------------------------------------------------
+ */
+
+.bg-primary {
+	--bs-bg-opacity: 1;
+	background-color: hsla(var(--bs-primary-hsl), var(--bs-bg-opacity)) !important;
+}
+
+.bg-secondary {
+	--bs-bg-opacity: 1;
+	background-color: hsla(var(--bs-secondary-hsl), var(--bs-bg-opacity)) !important;
+}
+
+.bg-success {
+	--bs-bg-opacity: 1;
+	background-color: hsla(var(--bs-success-hsl), var(--bs-bg-opacity)) !important;
+}
+
+.bg-info {
+	--bs-bg-opacity: 1;
+	background-color: hsla(var(--bs-info-hsl), var(--bs-bg-opacity)) !important;
+}
+
+.bg-warning {
+	--bs-bg-opacity: 1;
+	background-color: hsla(var(--bs-warning-hsl), var(--bs-bg-opacity)) !important;
+}
+
+.bg-danger {
+	--bs-bg-opacity: 1;
+	background-color: hsla(var(--bs-danger-hsl), var(--bs-bg-opacity)) !important;
+}
+
+.bg-light {
+	--bs-bg-opacity: 1;
+	background-color: hsla(var(--bs-light-hsl), var(--bs-bg-opacity)) !important;
+}
+
+.bg-dark {
+	--bs-bg-opacity: 1;
+	background-color: hsla(var(--bs-dark-hsl), var(--bs-bg-opacity)) !important;
+}
+
+.bg-black {
+	--bs-bg-opacity: 1;
+	background-color: hsla(var(--bs-black-hsl), var(--bs-bg-opacity)) !important;
+}
+
+.bg-white {
+	--bs-bg-opacity: 1;
+	background-color: hsla(var(--bs-white-hsl), var(--bs-bg-opacity)) !important;
+}
+
+.bg-body {
+	--bs-bg-opacity: 1;
+	background-color: hsla(var(--bs-body-bg-hsl), var(--bs-bg-opacity)) !important;
+}
+
+.bg-transparent {
+	--bs-bg-opacity: 1;
+	background-color: transparent !important;
+}
+
+.bg-body-secondary {
+	--bs-bg-opacity: 1;
+	background-color: hsla(var(--bs-secondary-bg-hsl), var(--bs-bg-opacity)) !important;
+}
+
+.bg-body-tertiary {
+	--bs-bg-opacity: 1;
+	background-color: hsla(var(--bs-tertiary-bg-hsl), var(--bs-bg-opacity)) !important;
+}
+
+.bg-body-emphasis {
+	--bs-bg-opacity: 1;
+	background-color: hsla(var(--bs-emphasis-bg-hsl), var(--bs-bg-opacity)) !important;
+}
+
+.bg-opacity-10 {
+	--bs-bg-opacity: 0.1;
+}
+
+.bg-opacity-25 {
+	--bs-bg-opacity: 0.25;
+}
+
+.bg-opacity-50 {
+	--bs-bg-opacity: 0.5;
+}
+
+.bg-opacity-75 {
+	--bs-bg-opacity: 0.75;
+}
+
+.bg-opacity-100 {
+	--bs-bg-opacity: 1;
+}
+
+.bg-primary-subtle {
+	background-color: var(--bs-primary-bg-subtle) !important;
+}
+
+.bg-secondary-subtle {
+	background-color: var(--bs-secondary-bg-subtle) !important;
+}
+
+.bg-success-subtle {
+	background-color: var(--bs-success-bg-subtle) !important;
+}
+
+.bg-info-subtle {
+	background-color: var(--bs-info-bg-subtle) !important;
+}
+
+.bg-warning-subtle {
+	background-color: var(--bs-warning-bg-subtle) !important;
+}
+
+.bg-danger-subtle {
+	background-color: var(--bs-danger-bg-subtle) !important;
+}
+
+.bg-light-subtle {
+	background-color: var(--bs-light-bg-subtle) !important;
+}
+
+.bg-dark-subtle {
+	background-color: var(--bs-dark-bg-subtle) !important;
+}
+
+.bg-gradient {
+	background-image: var(--bs-gradient) !important;
+}
