@@ -4,7 +4,7 @@ export type Address = {
   coordinates: [number, number];
   address: {
     street: string;
-    number: string;
+    number?: string;
     city: string;
     country: string;
     zip: string;
