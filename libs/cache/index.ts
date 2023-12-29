@@ -1,159 +1,218 @@
-import { getValueFromKeyString } from '../utils/objects';
+import { getValueFromKeyString } from "../utils/objects";
 
 type ObjectItem<Type> = {
-	key: string;
-	date: Date;
-	value: Type;
+  key: string;
+  date: Date;
+  value: Type;
 };
 
-export class ObjectCache<Type> {
-	ttl: number;
-	polling: number;
-	name?: string;
-	timer: number;
-	items: ObjectItem<Type>[];
-	pollOnSet: boolean;
-	browser: boolean;
+/**
+ * ObjectCache: A cache for objects, that follows the Map interface
+ * @param itemTtl `number` Time to live for each item in milliseconds. Default: 5 minutes
+ * @param pollingTime `number` Time between each poll in milliseconds. Default: 1 minute
+ * @param pollOnOperation `boolean` Whether to poll on each operation or not. Default: true
+ */
+export class ObjectCache<Type> extends Map<string, Type> {
+  itemTtl: number;
+  pollingTime: number;
+  items: Map<string, Type>;
+  dates: Map<string, Date>;
+  pollOnOperation: boolean;
 
-	constructor(ttl: number, polling: number, pollOnSet: boolean = false, name?: string, browser: boolean = false) {
-		this.items = [];
-		this.ttl = ttl;
-		this.polling = polling;
-		this.name = name;
-		this.pollOnSet = pollOnSet;
-		this.browser = browser;
+  timer: number;
 
-		// Restore from localStorage
-		if (this.browser && this.name && localStorage.getItem(`${this.name}-cache`)) {
-			this.items = JSON.parse(<string>localStorage.getItem(`${this.name}-cache`));
-			for (let i = 0; i < this.items.length; i++) {
-				this.items[i].date = new Date(this.items[i].date);
-			}
-			this.poll(false);
-		}
+  constructor(iterable?: readonly (readonly [string, Type])[] | null) {
+    super();
 
-		this.timer = setInterval(() => {
-			this.poll();
-		}, polling);
-	}
+    // Set items and dates
+    this.items = new Map<string, Type>(iterable);
+    this.dates = new Map<string, Date>();
+    if (iterable) {
+      iterable.forEach((item) => {
+        this.dates.set(item[0], new Date());
+      });
+    }
 
-	isExpired(item: ObjectItem<Type>) {
-		var startDate = new Date();
-		var seconds = (item.date.getTime() - startDate.getTime()) / 1000;
+    this.itemTtl = 5 * 60 * 1000; // 5 minutes
+    this.pollingTime = 60 * 1000; // 1 minute
+    this.pollOnOperation = true;
 
-		return seconds > this.ttl;
-	}
+    // Set timer
+    this.timer = setInterval(() => {
+      this._refreshItems();
+    }, this.pollingTime);
+  }
 
-	poll(dump: boolean = true) {
-		// Cleanup expired items
-		this.items.forEach((item) => {
-			if (this.isExpired(item)) {
-				this._delete(item);
-			}
-		});
+  setItemTtl(ttl: number) {
+    this.itemTtl = ttl;
+  }
 
-		// Dump to localStorage
-		if (dump && this.browser && this.name) {
-			localStorage.setItem(`${this.name}-cache`, JSON.stringify(this.items));
-			// console.log(`Dumped ${this.name}-cache to localStorage`);
-		}
-	}
+  setPollingTime(time: number, pollOnOperation: boolean = false) {
+    this.pollingTime = time;
+    this.pollOnOperation = pollOnOperation;
 
-	delete(key: string) {
-		for (let i = 0; i < this.items.length; i++) {
-			const item = this.items[i];
-			if (item.key == key) {
-				this._delete(item);
-			}
-		}
-	}
+    // Reset timer
+    clearInterval(this.timer);
+    this.timer = setInterval(() => {
+      this._refreshItems();
+    }, this.pollingTime);
+  }
 
-	_delete(item: ObjectItem<Type>) {
-		this.items.splice(this.items.indexOf(item), 1);
-	}
+  get size(): number {
+	return this.items.size;
+  }
 
-	set(key: string, value: Type) {
-		// Check if item already exists and update it if it does
-		for (let i = 0; i < this.items.length; i++) {
-			const item = this.items[i];
-			if (item.key == key) {
-				item.value = value;
-				item.date = new Date();
-				return;
-			}
-		}
+  [Symbol.iterator](): IterableIterator<[string, Type]> {
+	return this.items[Symbol.iterator]();
+  }
 
-		// Otherwise, create a new item
-		this.items.push({
-			key: key,
-			value: value,
-			date: new Date()
-		});
+  clear(): void {
+    this.items.clear();
+    this.dates.clear();
+  }
 
-		if (this.pollOnSet) {
-			this.poll();
-		}
-	}
+  delete(key: string): boolean {
+    const result = this.items.delete(key);
+    this.dates.delete(key);
 
-	get(key: string) {
-		for (let i = 0; i < this.items.length; i++) {
-			const item = this.items[i];
-			if (item.key == key) {
-				if (this.isExpired(item)) {
-					return null;
-				}
+    if (this.pollOnOperation) {
+      this._refreshItems();
+    }
 
-				return item.value;
-			}
-		}
+    return result;
+  }
 
-		return null;
-	}
+  entries(): IterableIterator<[string, Type]> {
+    return this.items.entries();
+  }
 
-	getByObjectKey(objectKey: string, objectValue: string) {
-		for (let i = 0; i < this.items.length; i++) {
-			const item = this.items[i];
+  forEach(callbackfn: (value: Type, key: string, map: Map<string, Type>) => void, thisArg?: any): void {
+    this.items.forEach(callbackfn, thisArg);
+  }
 
-			if (getValueFromKeyString(item.value, objectKey) == objectValue) {
-				if (this.isExpired(item)) {
-					return null;
-				}
+  get(key: string): Type | undefined {
+    // Check if item is expired or not
+    const date = this.dates.get(key);
+    if (!date) {
+      return undefined;
+    }
 
-				return item.value;
-			}
-		}
+    if (this.isExpired(key)) {
+      return undefined;
+    }
 
-		return null;
-	}
+    if (this.pollOnOperation) {
+      this._refreshItems();
+    }
 
-	getAll() {
-		const result: Type[] = [];
-		for (let i = 0; i < this.items.length; i++) {
-			const item = this.items[i];
+    return this.items.get(key);
+  }
 
-			// Check if item is expired
-			if (this.isExpired(item)) {
-				continue;
-			}
+  has(key: string): boolean {
+    const date = this.dates.get(key);
+    if (!date) {
+      return false;
+    }
 
-			result.push(item.value);
-		}
+    if (this.isExpired(key)) {
+      return false;
+    }
 
-		return result;
-	}
+    if (this.pollOnOperation) {
+      this._refreshItems();
+    }
 
-	has(key: string) {
-		for (let i = 0; i < this.items.length; i++) {
-			const item = this.items[i];
+    return this.items.has(key);
+  }
 
-			if (item.key == key) {
-				if (this.isExpired(item)) {
-					return false;
-				}
-				return true;
-			}
-		}
+  keys(): IterableIterator<string> {
+    return this.items.keys();
+  }
 
-		return false;
-	}
+  set(key: string, value: Type): this {
+    this.items.set(key, value);
+    this.dates.set(key, new Date());
+
+    if (this.pollOnOperation) {
+      this._refreshItems();
+    }
+
+    return this;
+  }
+
+  values(): IterableIterator<Type> {
+    return this.items.values();
+  }
+
+  isExpired(key: string): boolean {
+    const date = this.dates.get(key);
+    if (!date) {
+      return true;
+    }
+
+    if (this.isExpired(key)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  _refreshItems() {
+    const now = new Date();
+    const itemsToDelete: string[] = [];
+
+    this.dates.forEach((date, key) => {
+      if (this.isExpired(key)) {
+        itemsToDelete.push(key);
+      }
+    });
+
+    itemsToDelete.forEach((key) => {
+      this.delete(key);
+    });
+  }
+
+  getByObjectKey(objectKey: string, objectValue: string): Type | null {
+    const result: { key: string; value: Type }[] = [];
+    const keys = this.keys();
+    const nextKey = keys.next();
+
+    while (!nextKey.done) {
+      const key = nextKey.value;
+      if (this.isExpired(key)) {
+        continue;
+      }
+
+      const value = this.get(key);
+      if (value && getValueFromKeyString(value, objectKey) == objectValue) {
+        return value;
+      }
+    }
+
+    return null;
+  }
+
+  getAll(): { key: string; value: Type }[] {
+    const result: { key: string; value: Type }[] = [];
+    const keys = this.keys();
+    const nextKey = keys.next();
+
+    while (!nextKey.done) {
+      const key = nextKey.value;
+      if (this.isExpired(key)) {
+        continue;
+      }
+
+      const value = this.get(key);
+      if (value) {
+        result.push({ key, value });
+      }
+    }
+
+    if (this.pollOnOperation) {
+      this._refreshItems();
+    }
+
+    return result;
+  }
 }
