@@ -1,7 +1,14 @@
 import en from "./en.json";
 import es from "./es.json";
 
-export const countries = Object.fromEntries(
+export const countries: {
+    [key: string]: {
+        alpha3: string;
+        name: {
+            [key: string]: string;
+        };
+    };
+} = Object.fromEntries(
     en.map((country) => {
         return [
             country.alpha2,
