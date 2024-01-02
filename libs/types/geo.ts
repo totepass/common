@@ -5,9 +5,10 @@ export type Address = {
   address: {
     address: string;
     city: string;
+    zip: string;
     region: string;
     country: string;
-    zip: string;
+    countryCode: string;
   };
   timezone: string;
   context: { [key: string]: any };
