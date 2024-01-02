@@ -5,6 +5,7 @@ export type Address = {
   address: {
     address: string;
     city: string;
+    region: string;
     country: string;
     zip: string;
   };
