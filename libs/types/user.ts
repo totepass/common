@@ -1,5 +1,11 @@
 export type User = {
   id: string;
+  address?: {
+    address: string;
+    city: string;
+    countryCode: string;
+    coordinates: [number, number];
+  };
   avatar?: string;
   email: string;
   invite?: string;
