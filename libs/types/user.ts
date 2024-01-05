@@ -11,6 +11,7 @@ export type User = {
   invite?: string;
   language: "es" | "en" | string;
   name: string;
+  surname: string;
   password?: string;
   passwordConfirm?: string;
   verified: boolean;
