@@ -9,6 +9,7 @@ export type Train = {
 	from: Station;
 	departure: DateTime;
 	arrival: DateTime;
+	status: 'scheduled' | 'en-route' | 'delayed' | 'cancelled';
 };
 
 export type Station = {

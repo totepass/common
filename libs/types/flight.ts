@@ -9,6 +9,7 @@ export type Flight = {
 	from: string | Airport;
 	departure: DateTime;
 	arrival: DateTime;
+	status: 'scheduled' | 'en-route' | 'delayed' | 'cancelled';
 };
 
 export type Airline = {

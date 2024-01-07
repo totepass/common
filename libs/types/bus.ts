@@ -7,4 +7,5 @@ export type Bus = {
 	from: Station;
 	departure: DateTime;
 	arrival: DateTime;
+	status: 'scheduled' | 'en-route' | 'delayed' | 'cancelled';
 };
