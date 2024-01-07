@@ -2,6 +2,10 @@ import type { DateTime as DT } from "../types/time";
 import { DateTime } from "luxon";
 
 export function calculateDuration(start: DT, end: DT): number {
+    // Clone objects to avoid mutating the original objects
+    start = JSON.parse(JSON.stringify(start));
+    end = JSON.parse(JSON.stringify(end));
+
     // Sanitize time. Make sure time is always in the format HH:MM:SS
     if (start.time.split(":").length === 2) { start.time += ":00" };
     if (end.time.split(":").length === 2) { end.time += ":00" };
