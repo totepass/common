@@ -16,5 +16,11 @@
     "homepage": "https://github.com/totepass/common#readme",
     "publishConfig": {
         "@totepass:registry": "https://npm.pkg.github.com"
+    },
+    "dependencies": {
+        "luxon": "^3.4.4"
+    },
+    "devDependencies": {
+        "@types/luxon": "^3.4.0"
     }
 }
