@@ -5,8 +5,8 @@ export type Flight = {
         operator: Airline['iata'];
         number: string;
     };
-	to: string | Airport;
-	from: string | Airport;
+	to: Airport;
+	from: Airport;
 	departure: DateTime;
 	arrival: DateTime;
 	status: 'scheduled' | 'en-route' | 'delayed' | 'cancelled';
