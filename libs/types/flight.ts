@@ -26,7 +26,6 @@ export type Airport = {
 	iata: string;
 	name: string;
 	city: string;
-	state: string;
 	country: string;
 	elevation: number;
 	lat: number;
