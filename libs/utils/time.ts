@@ -22,3 +22,22 @@ export function durationAsString(duration: number): string {
 
     return `${hours}h ${minutes}m`;
 }
+
+/**
+ * Compare two DateTime objects
+ * @param date1 
+ * @param date2 
+ * @returns -1 if date1 is before date2, 0 if they are equal, 1 if date1 is after date2
+ */
+export function compareTime(date1: DT, date2: DT): -1 | 0 | 1 {
+    const date1Obj = DateTime.fromISO(`${date1.date}T${date1.time}`, { zone: date1.tz });
+    const date2Obj = DateTime.fromISO(`${date2.date}T${date2.time}`, { zone: date2.tz });
+
+    if (date1Obj < date2Obj) {
+        return -1;
+    } else if (date1Obj > date2Obj) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
