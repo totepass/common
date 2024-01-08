@@ -26,10 +26,10 @@ export type TripFile = {
     name: string;
     path: string;
     size: number;
-    mime: User;
-    assignedId: User["id"];
-    itineraryBlockId: TripItineraryBlock["id"];
-    metadata: any;
+    mime: string;
+    assignedId?: User["id"];
+    itineraryBlockId?: TripItineraryBlock["id"];
+    metadata?: any;
 };
 
 export type TripItineraryBlock = {
