@@ -7,8 +7,12 @@ export function calculateDuration(start: DT, end: DT): number {
     end = JSON.parse(JSON.stringify(end));
 
     // Sanitize time. Make sure time is always in the format HH:MM:SS
-    if (start.time.split(":").length === 2) { start.time += ":00" };
-    if (end.time.split(":").length === 2) { end.time += ":00" };
+    if (start.time.split(":").length === 2) {
+        start.time += ":00";
+    }
+    if (end.time.split(":").length === 2) {
+        end.time += ":00";
+    }
 
     const startDate = DateTime.fromISO(`${start.date}T${start.time}`, { zone: start.tz });
     const endDate = DateTime.fromISO(`${end.date}T${end.time}`, { zone: end.tz });
@@ -29,15 +33,26 @@ export function calculateDuration(start: DT, end: DT): number {
  * @param options.seconds `boolean` Include seconds in the output string
  * @returns `string` Duration as a string
  */
-export function durationAsString(duration: number, options: {years: boolean; months: boolean; weeks: boolean; days: boolean; hours: boolean; minutes: boolean; seconds: boolean} = {
-    years: false,
-    months: false,
-    weeks: false,
-    days: false,
-    hours: true,
-    minutes: true,
-    seconds: false
-}): string {
+export function durationAsString(
+    duration: number,
+    options: {
+        years?: boolean;
+        months?: boolean;
+        weeks?: boolean;
+        days?: boolean;
+        hours?: boolean;
+        minutes?: boolean;
+        seconds?: boolean;
+    } = {
+        years: false,
+        months: false,
+        weeks: false,
+        days: false,
+        hours: true,
+        minutes: true,
+        seconds: false,
+    }
+): string {
     let output = "";
     let years = Math.floor(duration / 525600);
 
@@ -86,8 +101,8 @@ export function durationAsString(duration: number, options: {years: boolean; mon
 
 /**
  * Compare two DateTime objects
- * @param date1 
- * @param date2 
+ * @param date1
+ * @param date2
  * @returns -1 if date1 is before date2, 0 if they are equal, 1 if date1 is after date2
  */
 export function compareTime(date1: DT, date2: DT): -1 | 0 | 1 {
