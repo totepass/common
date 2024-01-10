@@ -8,5 +8,6 @@ export type Transit = {
     from: Address;
     departure: DateTime;
     arrival: DateTime;
+	duration?: number;
     distance?: number;
 };
