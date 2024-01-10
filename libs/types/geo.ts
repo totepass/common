@@ -11,7 +11,7 @@ export type Address = {
         countryCode: string;
     };
     timezone: string;
-    context: { [key: string]: any };
+    context?: { [key: string]: any };
 };
 
 export function isAddress(object: any) {
@@ -31,6 +31,6 @@ export function isAddress(object: any) {
         typeof object.address.country === "string" &&
         typeof object.address.countryCode === "string" &&
         typeof object.timezone === "string" &&
-        typeof object.context === "object"
+        (typeof object.context === "object" || typeof object.context === "undefined")
     );
 }

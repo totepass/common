@@ -21,8 +21,7 @@ export function isFlight(object: any) {
         isAirport(object.to) &&
         isAirport(object.from) &&
         isDateTime(object.departure) &&
-        isDateTime(object.arrival) &&
-        typeof object.status === "string"
+        isDateTime(object.arrival)
     );
 }
 

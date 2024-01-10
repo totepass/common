@@ -13,6 +13,9 @@ export type Transit = {
 };
 
 export function isTransit(object: any) {
+    // Check that the object has the proper attributes and types
+    // If type is Car or Bus, arrival is not required
+    // duration and distance are optional
     return (
         typeof object === "object" &&
         typeof object.type === "string" &&
@@ -20,8 +23,8 @@ export function isTransit(object: any) {
         isAddress(object.to) &&
         isAddress(object.from) &&
         isDateTime(object.departure) &&
-        isDateTime(object.arrival) &&
-        typeof object.duration === "number" &&
-        typeof object.distance === "number"
+        (object.type === "Car" || object.type === "Bus" || isDateTime(object.arrival)) &&
+        (typeof object.duration === "number" || typeof object.duration === "undefined") &&
+        (typeof object.distance === "number" || typeof object.distance === "undefined")
     );
 }
