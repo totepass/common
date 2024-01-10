@@ -1,6 +1,7 @@
 import en from "./en.json";
 import es from "./es.json";
 
+// From https://github.com/stefangabos/world_countries/
 export const countries: {
     [key: string]: {
         alpha3: string;
