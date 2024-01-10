@@ -1,4 +1,4 @@
-import { Bus } from "./bus";
+import { Transit } from "./transit";
 import { Flight } from "./flight";
 import { Train } from "./train";
 import type { User } from "./user";
@@ -35,7 +35,7 @@ export type TripFile = {
 export type TripItineraryBlock = {
     id: string;
     type: any;
-    data: Flight | Bus | Train;
+    data: Flight | Train | Transit;
 };
 
 export type TripExpense = {
