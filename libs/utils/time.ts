@@ -57,25 +57,25 @@ export function durationAsString(
     let years = Math.floor(duration / 525600);
 
     if (options.years) {
-        output += years + "years ";
+        output += years + " years ";
         duration -= years * 525600;
     }
 
     let months = Math.floor(duration / 43800);
     if (options.months) {
-        output += months + "months ";
+        output += months + " months ";
         duration -= months * 43800;
     }
 
     let weeks = Math.floor(duration / 10080);
     if (options.weeks) {
-        output += weeks + "weeks ";
+        output += weeks + " weeks ";
         duration -= weeks * 10080;
     }
 
     let days = Math.floor(duration / 1440);
     if (options.days) {
-        output += days + "days ";
+        output += days + " days ";
         duration -= days * 1440;
     }
 
