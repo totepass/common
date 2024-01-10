@@ -10,6 +10,7 @@ export type Trip = {
     endDate: Date;
     owner: User;
     currency: string;
+    permission?: any;
     permissions: TripPermission[];
     files: TripFile[];
     expenses: TripExpense[];
