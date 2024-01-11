@@ -80,8 +80,8 @@ export class Calendar {
                 eventString += ` ${event.description.replace(/\n/g, "\n ")}\n`;
             }
             eventString += `GEO:${event.location.coordinates[0]};${event.location.coordinates[1]}\n`;
-            eventString += `X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=${event.location.location};\n`;
-            eventString += ` X-APPLE-RADIUS=72;X-TITLE=${event.location.name}:geo:${event.location.coordinates[0]},${event.location.coordinates[1]}`;
+            eventString += `X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS="${event.location.location}";\n`;
+            eventString += ` X-APPLE-RADIUS=72;X-TITLE="${event.location.name}":geo:${event.location.coordinates[0]},${event.location.coordinates[1]}\n`;
         } else {
             if (event.description) {
                 eventString += `DESCRIPTION:${event.description.replace(/\n/g, "\n ")}\n`;
