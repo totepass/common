@@ -67,7 +67,7 @@ DTEND:${this._dateTimeToiCalDateTimeString(event.end)}
 LOCATION:${event.location}
 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS="${event.location}";X-APPLE-RADIUS=72;X-TITLE=${event.location}
 DESCRIPTION:Apple Maps: https://maps.apple.com/?q=${event.location}\\n
-Google Maps: https://google.com/maps?q=${event.location}${event.description ? `\\n${event.description}` : ""}
+ Google Maps: https://google.com/maps?q=${event.location}${event.description ? `\\n${event.description}` : ""}
 TRANSP:OPAQUE
 SEQUENCE:1
 ${this._renderAlarms()}
