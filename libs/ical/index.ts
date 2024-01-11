@@ -1,7 +1,7 @@
 import tz from '@touch4it/ical-timezones';
 import { DateTime } from "../types/time";
 import { CalendarEvent } from "./types";
-import uuid from "uuid";
+import { v4 as uuidv4 } from 'uuid';
 
 export class Calendar {
     name: string;
@@ -13,7 +13,7 @@ export class Calendar {
     }
 
     addEvent(event: CalendarEvent) {
-        event.uid = uuid.v4();
+        event.uid = uuidv4();
         this.events.push(event);
     }
 
@@ -38,7 +38,7 @@ NAME:${this.name}
 X-WR-CALNAME:${this.name}
 ${this._renderTimezones()}
 ${this._renderEvents()}
-calendar += "END:VCALENDAR`;
+END:VCALENDAR`;
 
         return calendar;
     }
@@ -66,9 +66,8 @@ DTSTART:${this._dateTimeToiCalDateTimeString(event.start)}
 DTEND:${this._dateTimeToiCalDateTimeString(event.end)}
 LOCATION:${event.location}
 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS="${event.location}";X-APPLE-RADIUS=72;X-TITLE=${event.location}
-DESCRIPTION:Apple Maps: https://maps.apple.com/?q=${event.location}\\n\\n
-    Google Maps: https://google.com/maps?q=${event.location}\\n\\n
-    ${event.description ? event.description : ""}
+DESCRIPTION:Apple Maps: https://maps.apple.com/?q=${event.location}\\n
+Google Maps: https://google.com/maps?q=${event.location}${event.description ? `\\n${event.description}` : ""}
 TRANSP:OPAQUE
 SEQUENCE:1
 ${this._renderAlarms()}
@@ -98,8 +97,10 @@ END:VALARM`;
     }
 
     _renderTimezones() {
-        let timezonesArray = this.events.map((event) => event.start.tz);
-        timezonesArray = [...new Set(timezonesArray)];
+        let timezonesArrayStart = this.events.map((event) => event.start.tz);
+        let timezonesArrayEnd = this.events.map((event) => event.end.tz);
+        let timezonesArray = timezonesArrayStart.concat(timezonesArrayEnd);
+        timezonesArray = timezonesArray.filter((timezone, index) => timezonesArray.indexOf(timezone) === index);
 
         let timezones: string[] = [];
         for (const timezone of timezonesArray) {
