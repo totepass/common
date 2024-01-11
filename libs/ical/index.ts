@@ -34,7 +34,6 @@ export class Calendar {
         calendar += `VERSION:2.0\n`;
         calendar += `PRODID:-//Totepass//App//EN\n`;
         calendar += `NAME:${this.name}\n`;
-        calendar += `X-WR-CALNAME:${this.name}\n`;
         calendar += this._renderTimezones();
         calendar += this._renderEvents();
         calendar += `END:VCALENDAR\n`;
