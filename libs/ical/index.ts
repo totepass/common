@@ -66,7 +66,7 @@ export class Calendar {
         eventString += `DTSTART;${this._dateTimeToiCalDateTimeString(event.start)}\n`;
         eventString += `DTEND;${this._dateTimeToiCalDateTimeString(event.end)}\n`;
         eventString += `LOCATION:${event.location}\n`;
-        eventString += `X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS="${event.location}";X-APPLE-RADIUS=72;X-TITLE=${event.location}\n`;
+        eventString += `X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS="${event.location}";X-APPLE-RADIUS=72;X-TITLE="${event.location}"\n`;
         eventString += `DESCRIPTION:Apple Maps: https://maps.apple.com/?q=${encodeURIComponent(event.location)}\\n\n`;
         eventString += ` Google Maps: https://google.com/maps?q=${encodeURIComponent(event.location)}\\n\\n\n`;
         if (event.description) {
