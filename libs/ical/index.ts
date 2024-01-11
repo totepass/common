@@ -1,7 +1,7 @@
-import tz from '@touch4it/ical-timezones';
+import tz from "@touch4it/ical-timezones";
 import { DateTime } from "../types/time";
 import { CalendarEvent } from "./types";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 export class Calendar {
     name: string;
@@ -40,11 +40,14 @@ ${this._renderTimezones()}
 ${this._renderEvents()}
 END:VCALENDAR`;
 
+        // Remove empty lines
+        calendar = calendar.replace(/^\s*[\r\n]/gm, "");
+
         return calendar;
     }
 
     _dateTimeToiCalDateTimeString(dateTime: DateTime) {
-        return `TZID=${dateTime.tz}:${dateTime.date.replace(/-/g, '')}T${dateTime.time.replace(/:/g, '')}`;
+        return `TZID=${dateTime.tz}:${dateTime.date.replace(/-/g, "")}T${dateTime.time.replace(/:/g, "")}00`;
     }
 
     _renderEvents() {
@@ -52,48 +55,51 @@ END:VCALENDAR`;
     }
 
     _renderEvent(event: CalendarEvent) {
-        const dtStamp = this._dateTimeToiCalDateTimeString({
+        const dtStamp: DateTime = {
             date: "2024-01-01",
             time: "00:00",
             tz: "Europe/Madrid",
-        });
+        };
 
-        const eventString = `BEGIN:VEVENT
-UID:${event.uid}
-SUMMARY:${event.summary}
-DTSTAMP;${dtStamp}
-DTSTART;${this._dateTimeToiCalDateTimeString(event.start)}
-DTEND;${this._dateTimeToiCalDateTimeString(event.end)}
-LOCATION:${event.location}
-X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS="${event.location}";X-APPLE-RADIUS=72;X-TITLE=${event.location}
-DESCRIPTION:Apple Maps: https://maps.apple.com/?q=${event.location}\\n
- Google Maps: https://google.com/maps?q=${event.location}${event.description ? `\\n${event.description}` : ""}
-TRANSP:OPAQUE
-SEQUENCE:1
-${this._renderAlarms()}
-END:VEVENT`;
+        let eventString = "BEGIN:VEVENT\n";
+        eventString += `UID:d4479a3f-b4f7-4b11-81ca-c1c42e4e9a45\n`;
+        eventString += `SUMMARY:${event.summary}\n`;
+        eventString += `DTSTAMP;${this._dateTimeToiCalDateTimeString(dtStamp)}\n`;
+        eventString += `DTSTART;${this._dateTimeToiCalDateTimeString(event.start)}\n`;
+        eventString += `DTEND;${this._dateTimeToiCalDateTimeString(event.end)}\n`;
+        eventString += `LOCATION:${event.location}\n`;
+        eventString += `X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS="${event.location}";X-APPLE-RADIUS=72;X-TITLE=${event.location}\n`;
+        eventString += `DESCRIPTION:Apple Maps: https://maps.apple.com/?q=${event.location}\n\n`;
+        eventString += ` Google Maps: https://google.com/maps?q=${event.location}\n`;
+        if (event.description) {
+            eventString += ` ${event.description.replace(/\n/g, "\n ")}\n`;
+        }
+        eventString += `TRANSP:OPAQUE\n`;
+        eventString += `SEQUENCE:1\n`;
+        eventString += this._renderAlarms();
+        eventString += `END:VEVENT\n`;
 
         return eventString;
     }
 
     _renderAlarms() {
-        const alarm = `BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Reminder
-TRIGGER:PT0S
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Reminder
-TRIGGER;RELATED=START:-PT3H
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Reminder
-TRIGGER;RELATED=START:-PT30M
-END:VALARM`;
+        let alarmString = `BEGIN:VALARM\n`;
+        alarmString += `ACTION:DISPLAY\n`;
+        alarmString += `DESCRIPTION:Reminder\n`;
+        alarmString += `TRIGGER:PT0S\n`;
+        alarmString += `END:VALARM\n`;
+        alarmString += `BEGIN:VALARM\n`;
+        alarmString += `ACTION:DISPLAY\n`;
+        alarmString += `DESCRIPTION:Reminder\n`;
+        alarmString += `TRIGGER;RELATED=START:-PT3H\n`;
+        alarmString += `END:VALARM\n`;
+        alarmString += `BEGIN:VALARM\n`;
+        alarmString += `ACTION:DISPLAY\n`;
+        alarmString += `DESCRIPTION:Reminder\n`;
+        alarmString += `TRIGGER;RELATED=START:-PT30M\n`;
+        alarmString += `END:VALARM\n`;
 
-        return alarm;
+        return alarmString;
     }
 
     _renderTimezones() {
