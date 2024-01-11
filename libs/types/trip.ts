@@ -12,6 +12,7 @@ export type Trip = {
     owner: User;
     currency: string;
     permission?: any;
+    calendarId: string;
     permissions: TripPermission[];
     files: TripFile[];
     expenses: TripExpense[];
