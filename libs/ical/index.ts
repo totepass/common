@@ -30,15 +30,14 @@ export class Calendar {
     }
 
     renderCalendar() {
-        let calendar = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Totepass//App//EN
-METHOD:REQUEST
-NAME:${this.name}
-X-WR-CALNAME:${this.name}
-${this._renderTimezones()}
-${this._renderEvents()}
-END:VCALENDAR`;
+        let calendar = `BEGIN:VCALENDAR`;
+        calendar += `VERSION:2.0`;
+        calendar += `PRODID:-//Totepass//App//EN`;
+        calendar += `NAME:${this.name}`;
+        calendar += `X-WR-CALNAME:${this.name}`;
+        calendar += this._renderTimezones();
+        calendar += this._renderEvents();
+        calendar += `END:VCALENDAR`;
 
         // Remove empty lines
         calendar = calendar.replace(/^\s*[\r\n]/gm, "");
