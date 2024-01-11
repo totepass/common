@@ -44,7 +44,7 @@ END:VCALENDAR`;
     }
 
     _dateTimeToiCalDateTimeString(dateTime: DateTime) {
-        return `TZID=${dateTime.tz}:${dateTime.date.replace(/-/g, '')}T${dateTime.time.replace(/:/g, '')}00`;
+        return `TZID=${dateTime.tz}:${dateTime.date.replace(/-/g, '')}T${dateTime.time.replace(/:/g, '')}`;
     }
 
     _renderEvents() {
