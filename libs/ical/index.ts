@@ -65,16 +65,28 @@ export class Calendar {
         eventString += `DTSTAMP;${this._dateTimeToiCalDateTimeString(dtStamp)}\n`;
         eventString += `DTSTART;${this._dateTimeToiCalDateTimeString(event.start)}\n`;
         eventString += `DTEND;${this._dateTimeToiCalDateTimeString(event.end)}\n`;
-        eventString += `LOCATION:${event.location}\n`;
-        eventString += `X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS="${event.location}";X-APPLE-RADIUS=72;X-TITLE="${event.location}"\n`;
-        eventString += `DESCRIPTION:Apple Maps: https://maps.apple.com/?q=${encodeURIComponent(event.location)}\\n\n`;
-        eventString += ` Google Maps: https://google.com/maps?q=${encodeURIComponent(event.location)}\\n\\n\n`;
-        if (event.description) {
-            eventString += ` ${event.description.replace(/\n/g, "\n ")}\n`;
-        }
         eventString += `TRANSP:OPAQUE\n`;
         eventString += `SEQUENCE:1\n`;
         eventString += this._renderAlarms();
+        if (event.location) {
+            eventString += `LOCATION:${event.location}\n`;
+            eventString += `DESCRIPTION:Apple Maps: https://maps.apple.com/?q=${encodeURIComponent(
+                event.location.location
+            )}\\n\n`;
+            eventString += ` Google Maps: https://google.com/maps?q=${encodeURIComponent(
+                event.location.location
+            )}\\n\\n\n`;
+            if (event.description) {
+                eventString += ` ${event.description.replace(/\n/g, "\n ")}\n`;
+            }
+            eventString += `GEO:${event.location.coordinates[0]};${event.location.coordinates[1]}\n`;
+            eventString += `X-APPLE-STRUCTURED-LOCATION:VALUE=URI;X-ADDRESS=${event.location.location};`;
+            eventString += ` ;X-APPLE-RADIUS=72;X-TITLE=${event.location.name}:geo:${event.location[0]},${event.location[1]}`;
+        } else {
+            if (event.description) {
+                eventString += `DESCRIPTION:${event.description.replace(/\n/g, "\n ")}\n`;
+            }
+        }
         eventString += `END:VEVENT\n`;
 
         return eventString;

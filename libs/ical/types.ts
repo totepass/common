@@ -4,7 +4,11 @@ export type CalendarEvent = {
     uid?: string;
     summary: string;
     description?: string;
-    location: string;
+    location?: {
+        name: string;
+        location: string;
+        coordinates: number[];
+    };
     start: DateTime;
     end: DateTime;
 }
