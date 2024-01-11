@@ -39,6 +39,8 @@ export class Calendar {
         ${this._renderTimezones()}
         ${this._renderEvents()}
         calendar += "END:VCALENDAR`;
+
+        return calendar;
     }
 
     _dateTimeToiCalDateTimeString(dateTime: DateTime) {
