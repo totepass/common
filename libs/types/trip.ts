@@ -15,6 +15,7 @@ export type Trip = {
     calendarId: string;
     permissions: TripPermission[];
     files: TripFile[];
+    fileSize?: number;
     expenses: TripExpense[];
     itineraries: TripItineraryBlock[];
 };
