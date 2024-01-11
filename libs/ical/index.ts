@@ -60,15 +60,15 @@ export class Calendar {
         };
 
         let eventString = "BEGIN:VEVENT\n";
-        eventString += `UID:d4479a3f-b4f7-4b11-81ca-c1c42e4e9a45\n`;
+        eventString += `UID:${event.uid}\n`;
         eventString += `SUMMARY:${event.summary}\n`;
         eventString += `DTSTAMP;${this._dateTimeToiCalDateTimeString(dtStamp)}\n`;
         eventString += `DTSTART;${this._dateTimeToiCalDateTimeString(event.start)}\n`;
         eventString += `DTEND;${this._dateTimeToiCalDateTimeString(event.end)}\n`;
         eventString += `LOCATION:${event.location}\n`;
         eventString += `X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS="${event.location}";X-APPLE-RADIUS=72;X-TITLE=${event.location}\n`;
-        eventString += `DESCRIPTION:Apple Maps: https://maps.apple.com/?q=${event.location}\\n\n`;
-        eventString += ` Google Maps: https://google.com/maps?q=${event.location}\\n\\n\n`;
+        eventString += `DESCRIPTION:Apple Maps: https://maps.apple.com/?q=${encodeURIComponent(event.location)}\\n\n`;
+        eventString += ` Google Maps: https://google.com/maps?q=${encodeURIComponent(event.location)}\\n\\n\n`;
         if (event.description) {
             eventString += ` ${event.description.replace(/\n/g, "\n ")}\n`;
         }
