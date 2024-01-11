@@ -1,4 +1,4 @@
-import { tzlib_get_ical_block } from "timezones-ical-library";
+import tz from '@touch4it/ical-timezones';
 import { DateTime } from "../types/time";
 import { CalendarEvent } from "./types";
 import uuid from "uuid";
@@ -31,20 +31,20 @@ export class Calendar {
 
     renderCalendar() {
         let calendar = `BEGIN:VCALENDAR
-        VERSION:2.0
-        PRODID:-//Totepass//App//EN
-        METHOD:REQUEST
-        NAME:${this.name}
-        X-WR-CALNAME:${this.name}
-        ${this._renderTimezones()}
-        ${this._renderEvents()}
-        calendar += "END:VCALENDAR`;
+VERSION:2.0
+PRODID:-//Totepass//App//EN
+METHOD:REQUEST
+NAME:${this.name}
+X-WR-CALNAME:${this.name}
+${this._renderTimezones()}
+${this._renderEvents()}
+calendar += "END:VCALENDAR`;
 
         return calendar;
     }
 
     _dateTimeToiCalDateTimeString(dateTime: DateTime) {
-        return `TZID=${dateTime.tz}:${dateTime.date}T${dateTime.time}00`;
+        return `TZID=${dateTime.tz}:${dateTime.date.replace(/-/g, '')}T${dateTime.time.replace(/:/g, '')}00`;
     }
 
     _renderEvents() {
@@ -59,40 +59,40 @@ export class Calendar {
         });
 
         const eventString = `BEGIN:VEVENT
-        UID:${event.uid}
-        SUMMARY:${event.summary}
-        DTSTAMP:${dtStamp}
-        DTSTART:${this._dateTimeToiCalDateTimeString(event.start)}
-        DTEND:${this._dateTimeToiCalDateTimeString(event.end)}
-        LOCATION:${event.location}
-        X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS="${event.location}";X-APPLE-RADIUS=72;X-TITLE=${event.location}
-        DESCRIPTION:Apple Maps: https://maps.apple.com/?q=${event.location}\\n\\n
-         Google Maps: https://google.com/maps?q=${event.location}\\n\\n
-         ${event.description}
-        TRANSP:OPAQUE
-        SEQUENCE:1
-        ${this._renderAlarms()}
-        END:VEVENT`;
+UID:${event.uid}
+SUMMARY:${event.summary}
+DTSTAMP:${dtStamp}
+DTSTART:${this._dateTimeToiCalDateTimeString(event.start)}
+DTEND:${this._dateTimeToiCalDateTimeString(event.end)}
+LOCATION:${event.location}
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS="${event.location}";X-APPLE-RADIUS=72;X-TITLE=${event.location}
+DESCRIPTION:Apple Maps: https://maps.apple.com/?q=${event.location}\\n\\n
+    Google Maps: https://google.com/maps?q=${event.location}\\n\\n
+    ${event.description ? event.description : ""}
+TRANSP:OPAQUE
+SEQUENCE:1
+${this._renderAlarms()}
+END:VEVENT`;
 
         return eventString;
     }
 
     _renderAlarms() {
         const alarm = `BEGIN:VALARM
-        ACTION:DISPLAY
-        DESCRIPTION:Reminder
-        TRIGGER:PT0S
-        END:VALARM
-        BEGIN:VALARM
-        ACTION:DISPLAY
-        DESCRIPTION:Reminder
-        TRIGGER;RELATED=START:-PT3H
-        END:VALARM
-        BEGIN:VALARM
-        ACTION:DISPLAY
-        DESCRIPTION:Reminder
-        TRIGGER;RELATED=START:-PT30M
-        END:VALARM`;
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+TRIGGER:PT0S
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+TRIGGER;RELATED=START:-PT3H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+TRIGGER;RELATED=START:-PT30M
+END:VALARM`;
 
         return alarm;
     }
@@ -103,7 +103,10 @@ export class Calendar {
 
         let timezones: string[] = [];
         for (const timezone of timezonesArray) {
-            timezones.push(tzlib_get_ical_block(timezone)[1])
+            const icalTz = tz.getVtimezoneComponent(timezone);
+            if (icalTz) {
+                timezones.push(icalTz);
+            }
         }
 
         return timezones.join("\n");
