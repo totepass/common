@@ -13,6 +13,10 @@ export type Trip = {
     currency: string;
     permission?: any;
     calendarId: string;
+    currentUser?: {
+        user: User;
+        role: any;
+    }
     permissions: TripPermission[];
     files: TripFile[];
     fileSize?: number;
