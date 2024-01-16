@@ -34,6 +34,7 @@ export type TripFile = {
     assignedId?: User["id"];
     itineraryBlockId?: TripItineraryBlock["id"];
     metadata?: any;
+    suggestions?: any;
 };
 
 export type TripItineraryBlock = {
