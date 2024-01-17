@@ -59,8 +59,8 @@ export type TripExpense = {
 
 export type TripPayment = {
     id: string;
-    payerId: User["id"];
-    payeeId: User["id"];
+    payer: User;
+    payee: User;
     amount: number;
     date: Date;
 };
