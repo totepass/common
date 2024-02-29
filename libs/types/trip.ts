@@ -54,6 +54,8 @@ export type TripExpense = {
     amount: number;
     category: string;
     date: Date;
+    splitType: 'proportional' | 'custom';
+    payer: User;
     payments: TripPayment[];
 };
 
