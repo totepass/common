@@ -16,7 +16,7 @@ export type Trip = {
     currentUser?: {
         user: User;
         role: any;
-    }
+    };
     permissions: TripPermission[];
     files: TripFile[];
     fileSize?: number;
@@ -54,7 +54,7 @@ export type TripExpense = {
     amount: number;
     category: string;
     date: Date;
-    splitType: 'proportional' | 'custom';
+    splitType: "proportional" | "custom";
     payer: User;
     payments: TripPayment[];
 };
