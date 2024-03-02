@@ -18,6 +18,7 @@ export type Trip = {
         role: any;
     };
     permissions: TripPermission[];
+    invites: TripInvite[];
     files: TripFile[];
     fileSize?: number;
     expenses: TripExpense[];
@@ -65,4 +66,11 @@ export type TripPayment = {
     payee: User;
     amount: number;
     date: Date;
+};
+
+export type TripInvite = {
+    id: string;
+    email: string;
+    invitedBy: User;
+    invitedAt: Date;
 };
