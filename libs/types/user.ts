@@ -15,6 +15,7 @@ export type User = {
   password?: string;
   passwordConfirm?: string;
   verified: boolean;
+  calendarId?: string;
   createdAt: Date;
   updatedAt: Date;
   deletedAt?: Date | null;
