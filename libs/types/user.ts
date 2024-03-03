@@ -17,6 +17,8 @@ export type User = {
     passwordConfirm?: string;
     verified?: boolean;
     calendarId?: string;
+    subscribedUntil?: Date;
+    subscriptionType?: "Economy" | "FirstClass" | "Donation";
     createdAt?: Date;
     updatedAt?: Date;
     deletedAt?: Date | null;
