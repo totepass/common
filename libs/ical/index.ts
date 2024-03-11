@@ -1,4 +1,4 @@
-import tz from "@touch4it/ical-timezones";
+import { tzlib_get_ical_block, tzlib_get_offset, tzlib_get_timezones } from "timezones-ical-library";
 import { DateTime } from "../types/time";
 import { CalendarEvent } from "./types";
 import { v4 as uuidv4 } from "uuid";
@@ -81,12 +81,8 @@ export class Calendar {
         eventString += this._renderAlarms();
         if (event.location) {
             eventString += `LOCATION:${event.location.location}\n`;
-            eventString += `DESCRIPTION:Apple Maps: https://maps.apple.com/?q=${encodeURIComponent(
-                event.location.location
-            )}\\n\n`;
-            eventString += ` Google Maps: https://google.com/maps?q=${encodeURIComponent(
-                event.location.location
-            )}\\n\\n\n`;
+            eventString += `DESCRIPTION:Apple Maps: https://maps.apple.com/?q=${encodeURIComponent(event.location.location)}\\n\n`;
+            eventString += ` Google Maps: https://google.com/maps?q=${encodeURIComponent(event.location.location)}\\n\\n\n`;
             if (event.description) {
                 eventString += ` ${event.description.replace(/\n/g, "\n ")}\n`;
             }
@@ -131,7 +127,7 @@ export class Calendar {
 
         let timezones: string[] = [];
         for (const timezone of timezonesArray) {
-            const icalTz = tz.getVtimezoneComponent(timezone);
+            const icalTz = (tzlib_get_ical_block(timezone) as string[]).join("\n");
             if (icalTz) {
                 timezones.push(icalTz);
             }
