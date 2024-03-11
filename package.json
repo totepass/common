@@ -18,8 +18,8 @@
         "@totepass:registry": "https://npm.pkg.github.com"
     },
     "dependencies": {
+        "@touch4it/ical-timezones": "^1.9.0",
         "luxon": "^3.4.4",
-        "timezones-ical-library": "^1.8.2",
         "uuid": "^9.0.1"
     },
     "devDependencies": {
