@@ -19,7 +19,9 @@ export function isTransit(object: any) {
     return (
         typeof object === "object" &&
         typeof object.type === "string" &&
+        ["Car", "Bus", "Train", "Public transit", "Other"].includes(object.type) &&
         typeof object.name === "string" &&
+        object.name.trim() !== "" &&
         isAddress(object.to) &&
         isAddress(object.from) &&
         isDateTime(object.departure) &&

@@ -16,7 +16,10 @@ export function isDateTime(object: any) {
     return (
         typeof object === "object" &&
         typeof object.date === "string" &&
+        object.date.match(/^\d{4}-\d{2}-\d{2}$/) !== null &&
         typeof object.time === "string" &&
-        typeof object.tz === "string"
+        object.time.match(/^\d{2}:\d{2}(:\d{2})?$/) !== null &&
+        typeof object.tz === "string" &&
+        object.tz.split("/").length === 2
     );
 }

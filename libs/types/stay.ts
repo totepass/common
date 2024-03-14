@@ -13,7 +13,9 @@ export function isStay(object: any) {
     return (
         typeof object === "object" &&
         typeof object.type === "string" &&
+        ["Hotel", "Hostel", "House", "Room", "Other"].includes(object.type) &&
         typeof object.name === "string" &&
+        object.name.trim() !== "" &&
         isAddress(object.address) &&
         isDateTime(object.checkin) &&
         isDateTime(object.checkout)

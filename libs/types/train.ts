@@ -17,7 +17,9 @@ export function isTrain(object: any) {
         typeof object === "object" &&
         typeof object.number === "object" &&
         typeof object.number.operator === "string" &&
+        object.number.operator.trim() !== "" &&
         typeof object.number.number === "string" &&
+        object.number.number.trim() !== "" &&
         isStation(object.to) &&
         isStation(object.from) &&
         isDateTime(object.departure) &&
@@ -41,12 +43,17 @@ export function isStation(object: any) {
     return (
         typeof object === "object" &&
         typeof object.name === "string" &&
+        object.name.trim() !== "" &&
         typeof object.address === "string" &&
+        object.address.trim() !== "" &&
         typeof object.city === "string" &&
+        object.city.trim() !== "" &&
         typeof object.country === "string" &&
+        object.country.length === 2 &&
         typeof object.elevation === "number" &&
         typeof object.lat === "number" &&
         typeof object.lon === "number" &&
-        typeof object.tz === "string"
+        typeof object.tz === "string" &&
+        object.tz.split("/").length === 2
     );
 }
